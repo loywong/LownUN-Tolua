@@ -1,0 +1,4 @@
+*.json linguist-language=Lua
+*.proto linguist-language=Lua
+*.cs linguist-language=Lua
+*.lua linguist-language=Lua
