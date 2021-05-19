@@ -24,16 +24,18 @@ end
 function this.Start(transform)
     Log.Red("test", transform:Find("Image").name)
     
-    UIManager.Instance:LoadPanel(
-        "Login",
-        "UI_Test",
-        function(go)
-            Log.Red("test", "UIManager load panel complete! name: UI_Test")
-        end,
-        transform:Find("Image").transform
-    )
+    -- TEST 测试手动加载UI界面
+    -- UIManager.Instance:LoadPanel(
+    --     "Login",
+    --     "UI_Test",
+    --     function(go)
+    --         Log.Red("test", "UIManager load panel complete! name: UI_Test")
+    --     end,
+    --     transform:Find("Image").transform
+    -- )
 end
 
 function this.OnClickEntryLobby()
+    print("2021 2021 2021 2021 2021 2021 2021 2021")
     LoginController.ClickEnterLobby()
 end

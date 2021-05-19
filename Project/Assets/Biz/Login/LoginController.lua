@@ -31,7 +31,8 @@ function this.OnStart()
     -- 延迟加载依赖资源
     -- AssetManager.Instance:LoadFontArtAsync("Scene_Login", "artfontname", nil)
 
-    UIManager.Instance:LoadPanel(this.sceneName, "UI_LoginReg", this.TestUI, nil)
+    -- TEST 测试手动加载UI界面
+    -- UIManager.Instance:LoadPanel(this.sceneName, "UI_LoginReg", this.TestUI, nil)
 end
 
 -- function this.Complete_Scene()

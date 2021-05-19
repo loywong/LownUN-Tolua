@@ -25,11 +25,11 @@ function this.Awake(transform)
     print("@@@UIView Awake: " .. "UILoginRegView")
 
     -- this.txt_loginNotice = transform:Find("Txt_LoginNotice")
-    -- this.btn_enterLobby = transform:Find("Btn_EnterLobby"):GetComponent("UnityEngine.UI.Button")
+    this.btn_enterLobby = transform:Find("Btn_EnterLobby"):GetComponent("UnityEngine.UI.Button")
+    print(this.btn_enterLobby.gameObject)
 
-    -- print(this.btn_enterLobby.gameObject)
-    -- -- 注册事件
-    -- LuaFuncsUI.SetClickCallback(this.btn_enterLobby.gameObject, LoginController.ClickEnterLobby)
+    -- 注册事件
+    LuaFuncsUI.SetClickCallback(this.btn_enterLobby.gameObject, LoginController.ClickEnterLobby)
 
     -- TEST protobuf of lua
 

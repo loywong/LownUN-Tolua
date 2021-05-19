@@ -33,13 +33,6 @@ public class Entry : MonoBehaviour {
     }
 
     void Start () {
-        List<int> aaa = new List<int>(){1,3,4,2};
-        aaa.Sort((x,y)=>{return x-y;});
-        Debug.Log(aaa[0]);
-        Debug.Log(aaa[1]);
-        Debug.Log(aaa[2]);
-        return;
-
         OnStart (false);
     }
     /// <summary>
@@ -102,12 +95,15 @@ public class Entry : MonoBehaviour {
             // ==
         }
 
+
         this.StartLogic ();
     }
 
     private void StartLogic () {
         Log.Green ("workflow", "Entry{} asset hotupdate check!!!");
+
         Test ();
+
         AssetUpdate.Instance.OnStart (
             () => {
                 Log.Green ("workflow", "Entry{} StartLogic() when hotupdate check over!");
@@ -118,6 +114,8 @@ public class Entry : MonoBehaviour {
     }
 
     private void Test () {
+        Debug.Log ("！！！Entry{} Test() 临时测试项 ----------- begin");
+
         // // Test1 直接执行一个脚本
         // gameObject.AddComponent<LuaBehaviourTest> ();
 
@@ -125,5 +123,13 @@ public class Entry : MonoBehaviour {
         // UIManager.Instance.LoadPanel ("Login", "UILogin", null, null, panel => {
         //     Debug.Log ("加载 Login面板结束");
         // });
+
+        // List<int> aaa = new List<int>(){1,3,4,2};
+        // aaa.Sort((x,y)=>{return x-y;});
+        // Debug.Log(aaa[0]);
+        // Debug.Log(aaa[1]);
+        // Debug.Log(aaa[2]);
+        
+        Debug.Log ("！！！Entry{} Test() 临时测试项 ----------- end");
     }
 }
