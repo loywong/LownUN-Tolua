@@ -23,7 +23,7 @@ end
 
 function this.Start(transform)
     Log.Red("test", transform:Find("Image").name)
-    
+
     -- TEST 测试手动加载UI界面
     -- UIManager.Instance:LoadPanel(
     --     "Login",
@@ -33,9 +33,11 @@ function this.Start(transform)
     --     end,
     --     transform:Find("Image").transform
     -- )
+
+    -- TEST 测试proto数据包
+    Fn_Account.TestProtobuf()
 end
 
 function this.OnClickEntryLobby()
-    print("2021 2021 2021 2021 2021 2021 2021 2021")
     LoginController.ClickEnterLobby()
 end

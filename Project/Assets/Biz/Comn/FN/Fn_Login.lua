@@ -2,7 +2,7 @@ Fn_Login = {}
 local this = Fn_Login
 
 function this.OnStart()
-    print("Fn_Login, Start()")
+    print("____________________________ Fn_Login, Start()")
 
     -- // 判断进入哪个场景
     -- // 1 新手进入 newplayer.scene
@@ -19,11 +19,11 @@ function this.OnStart()
 end
 
 function this.OnStart_Relink()
-    print("Fn_Login, Start_Relink()")
+    print("____________________________ Fn_Login, Start_Relink()")
 end
 
 function this.LinkGameServer()
-    print("Fn_Login, LinkGameServer()")
+    print("____________________________ Fn_Login, LinkGameServer()")
 end
 
 Fn_Login.OnStart()
