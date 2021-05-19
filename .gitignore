@@ -42,7 +42,7 @@ sysinfo.txt
 [Tt]emp
 _[Tt]emp
 [Tt]emp.meta
-ProjectSettings
+# ProjectSettings
 
 
 AssetBundles
@@ -64,7 +64,7 @@ patch.*.obb
 Thumbs.db
 Thumbs.db.meta
 
-ProjectSettings
+# ProjectSettings
 [Ll]ibrary
 *.pidb
 *.unityproj
