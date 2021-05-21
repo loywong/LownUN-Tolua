@@ -1,7 +1,6 @@
 ﻿/****************************************************************
  * File			: Assets\CORE\Module\SoundManager.cs
  * Author		: www.loywong.com
- * Company		: ??? Co.,Ltd
  * COPYRIGHT	: (C)
  * Date			: 2019/08/01
  * Description	: 播放背景音乐，音效，调节音量大小，关闭音频，暂停音频，恢复音频

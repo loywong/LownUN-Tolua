@@ -1,7 +1,6 @@
 ﻿/****************************************************************
  * File			: Assets\CORE\Module\Net\NetManager.cs
  * Author		: www.loywong.com
- * Company		: ??? Co.,Ltd
  * COPYRIGHT	: (C)
  * Date			: 2019/08/01
  * Description	: 网络模块的封装主类 

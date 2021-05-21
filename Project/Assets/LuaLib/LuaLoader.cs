@@ -1,7 +1,6 @@
 ﻿/****************************************************************
  * File			: Assets\LuaLib\LuaLoader.cs
  * Author		: www.loywong.com
- * Company		: ??? Co.,Ltd
  * COPYRIGHT	: (C)
  * Date			: 2019/08/01
  * Description	: 重载读取Lua文件的流程，分为编辑器模式和运行时从bundle读取

@@ -1,7 +1,6 @@
 ﻿/****************************************************************
  * File			: Assets\CORE\Module\Asset\AssetUpdate.cs
  * Author		: www.loywong.com
- * Company		: ??? Co.,Ltd
  * COPYRIGHT	: (C)
  * Date			: 2019/08/02
  * Description	: 资源热更新控制器

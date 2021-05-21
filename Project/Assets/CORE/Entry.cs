@@ -1,7 +1,6 @@
 ﻿/****************************************************************
  * File			: Assets\CORE\Entry.cs
  * Author		: www.loywong.com
- * Company		: ??? Co.,Ltd
  * COPYRIGHT	: (C)
  * Date			: 2019/07/29
  * Description	: 程序逻辑入口

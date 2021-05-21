@@ -1,7 +1,6 @@
 ﻿/****************************************************************
  * File			: Assets\CORE\Module\Asset\AssetManager.cs
  * Author		: www.loywong.com
- * Company		: ??? Co.,Ltd
  * COPYRIGHT	: (C)
  * Date			: 2019/08/02
  * Description	: 加载所有资源类型（全部采用异步的方式！）

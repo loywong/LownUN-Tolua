@@ -1,7 +1,6 @@
 ﻿/****************************************************************
  * File			: Assets\CORE\Util\TimeWatcher.cs
  * Author		: www.loywong.com
- * Company		: ??? Co.,Ltd
  * COPYRIGHT	: (C)
  * Date			: 2019/08/02
  * Description	: 通用定时器 支持once multi loop

@@ -1,7 +1,6 @@
 ﻿/****************************************************************
  * File			: Assets\CORE\Util\Log.cs
  * Author		: www.loywong.com
- * Company		: ??? Co.,Ltd
  * COPYRIGHT	: (C)
  * Date			: 2018/10/09
  * Description	: 通过Tag来控制有选择性的输出Log

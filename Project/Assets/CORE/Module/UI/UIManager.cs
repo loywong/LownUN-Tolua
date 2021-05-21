@@ -1,7 +1,6 @@
 ﻿/****************************************************************
  * File			: Assets\CORE\Module\UI\UIManager.cs
  * Author		: www.loywong.com
- * Company		: ??? Co.,Ltd
  * COPYRIGHT	: (C)
  * Date			: 2019/07/29
  * Description	: 管理所有的UI面板 包括加载，卸载，缓存（特别是普通面板的堆栈，

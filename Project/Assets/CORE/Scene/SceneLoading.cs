@@ -1,7 +1,6 @@
 ﻿/****************************************************************
  * File			: Assets\CORE\Scene\SceneLoading.cs
  * Author		: www.loywong.com
- * Company		: ??? Co.,Ltd
  * COPYRIGHT	: (C)
  * Date			: 2019/08/01
  * Description	: 游戏场景切换逻辑的 Scene文件 load过程处理
