@@ -1,5 +1,5 @@
 ﻿/****************************************************************
- * File			: Assets\CORE\Scene\SceneLoading.cs
+ * File			: Assets\CORE\SceneLoading.cs
  * Author		: www.loywong.com
  * COPYRIGHT	: (C)
  * Date			: 2019/08/01

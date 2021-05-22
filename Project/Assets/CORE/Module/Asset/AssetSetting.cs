@@ -1,4 +1,14 @@
-﻿using UnityEngine;
+﻿/****************************************************************
+ * File			: Assets\CORE\Module\Asset\AssetSetting.cs
+ * Author		: www.loywong.com
+ * COPYRIGHT	: (C)
+ * Date			: 2019/08/02
+ * Description	: 资源目录配置
+ * Version		: 1.0
+ * Maintain		: //[date] desc
+ ****************************************************************/
+
+using UnityEngine;
 
 public class AssetSetting {
     // 所有业务资源的根目录

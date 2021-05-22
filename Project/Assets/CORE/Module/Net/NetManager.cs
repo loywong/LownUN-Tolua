@@ -3,16 +3,11 @@
  * Author		: www.loywong.com
  * COPYRIGHT	: (C)
  * Date			: 2019/08/01
- * Description	: 网络模块的封装主类 
+ * Description	: 网络通信 长链接 通用网络逻辑 主类 
                 Sample: NetManager.Instance.Request(code, request, response)
  * Version		: 1.0
  * Maintain		: //[date] desc
  ****************************************************************/
-
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 public class NetManager : ManagerBase<NetManager> {
 

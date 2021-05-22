@@ -1,4 +1,14 @@
-﻿using UnityEngine;
+﻿/****************************************************************
+ * File			: Assets\CORE\Util\GameObjectOp.cs
+ * Author		: www.loywong.com
+ * COPYRIGHT	: (C)
+ * Date			: 2019/08/02
+ * Description	: 操作Unity GameObject可视化对象
+ * Version		: 1.0
+ * Maintain		: //[date] desc
+ ****************************************************************/
+
+using UnityEngine;
 
 public class GameObjectOp {
     /// <summary>

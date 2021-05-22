@@ -18,7 +18,7 @@
 	
 	"文件头部注释_C#": {
 		"prefix": "#Snippet_FileHeader_C#",
-		"body": "/****************************************************************\r\n * File\t\t\t: $TM_FILEPATH\r\n * Author\t\t: www.loywong.com\r\n * COPYRIGHT\t: (C)\r\n * Date\t\t\t: $CURRENT_YEAR/$CURRENT_MONTH/$CURRENT_DATE\r\n * Description\t: desc\r\n * Version\t\t: 1.0\r\n * Maintain\t\t: //[date] desc\r\n ****************************************************************/",
+		"body": "/****************************************************************\r\n * File\t\t\t: $TM_FILEPATH\r\n * Author\t\t: www.loywong.com\r\n * COPYRIGHT\t: (C)\r\n * Date\t\t\t: $CURRENT_YEAR/$CURRENT_MONTH/$CURRENT_DATE\r\n * Description\t: desc\r\n * Version\t\t: 1.0\r\n * Maintain\t\t: //[date] desc\r\n ****************************************************************/\n",
 		"description": "在当前位置生成一段代码文件的头部注释"
 	},
 

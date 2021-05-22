@@ -1,4 +1,14 @@
-﻿using UnityEngine;
+﻿/****************************************************************
+ * File			: Assets\CORE\GameSetting.cs
+ * Author		: www.loywong.com
+ * COPYRIGHT	: (C)
+ * Date			: 2019/07/29
+ * Description	: 游戏全局设置项
+ * Version		: 1.0
+ * Maintain		: //[date] desc
+ ****************************************************************/
+
+using UnityEngine;
 
 public class GameSetting {
     public static readonly int FrameRate = 60;

@@ -1,4 +1,14 @@
-﻿using System.Text;
+﻿/****************************************************************
+ * File			: Assets\CORE\Module\Asset\AssetPath.cs
+ * Author		: www.loywong.com
+ * COPYRIGHT	: (C)
+ * Date			: 2019/08/02
+ * Description	: 资源目录逻辑处理
+ * Version		: 1.0
+ * Maintain		: //[date] desc
+ ****************************************************************/
+
+using System.Text;
 using UnityEngine;
 
 public class AssetPath {

@@ -1,9 +1,9 @@
 ﻿/****************************************************************
- * File			: Assets\CORE\VI\UISceneLoading.cs
+ * File			: Assets\CORE\UISceneLoading.cs
  * Author		: www.loywong.com
  * COPYRIGHT	: (C)
  * Date			: 2019/08/01
- * Description	: 显示场景加载的界面
+ * Description	: 显示场景加载的信息界面
  * Version		: 1.0
  * Maintain		: //[date] desc
  ****************************************************************/

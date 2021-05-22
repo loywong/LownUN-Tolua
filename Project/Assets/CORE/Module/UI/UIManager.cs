@@ -129,6 +129,13 @@ public class UIManager : ManagerVIBase<UIManager> {
         // return go;
     }
 
+    public void ShowWaiting () {
+
+    }
+    public void HideWaiting () {
+
+    }
+
     // 清理篇 =================================================================================
     public void ClearForSceneChange () {
         Log.Trace ("ui", "UIManager{} ClearForSceneSwitch");

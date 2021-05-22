@@ -1,4 +1,14 @@
-﻿using System;
+﻿/****************************************************************
+ * File			: Assets\CORE\Module\Asset\BundleLoader.cs
+ * Author		: www.loywong.com
+ * COPYRIGHT	: (C)
+ * Date			: 2019/08/02
+ * Description	: 从bundle加载资源
+ * Version		: 1.0
+ * Maintain		: //[date] desc
+ ****************************************************************/
+
+using System;
 using System.IO;
 using UnityEngine;
 
