@@ -91,7 +91,7 @@ public class AssetManager : ManagerBase<AssetManager> {
             Log.Blue ("asset", "moduleName: " + scene);
             Log.Blue ("asset", "folderName: " + folderName);
             Log.Blue ("asset", "prefabName: " + prefabName);
-            filepath = string.Format ("Assets/Biz/{0}/{1}/{2}", scene, folderName, prefabName);
+            filepath = string.Format ("Assets/BIZ_Res/{0}/{1}/{2}", scene, folderName, prefabName);
             Log.Gray ("asset","AssetManager LoadPrefab path is: " + filepath);
             GameObject go = null;
 #if UNITY_EDITOR
@@ -103,7 +103,7 @@ public class AssetManager : ManagerBase<AssetManager> {
         }
 
         folderName = prefabType.ToString ().ToLower ();
-        filepath = string.Format ("Assets/Biz/{0}/{1}/{2}", scene, folderName, prefabName + ".prefab"); //, AssetSetting.PrefabExtName
+        filepath = string.Format ("Assets/BIZ_Res/{0}/{1}/{2}", scene, folderName, prefabName + ".prefab"); //, AssetSetting.PrefabExtName
         
         // 和创建bundle时的规则一样！！！
         string abName = prefabName.ToLower () + ".unity3d";
@@ -123,7 +123,7 @@ public class AssetManager : ManagerBase<AssetManager> {
         string folderName = "Sound";
 
         if (!isLoadByBundle) {
-            filepath = string.Format ("Assets/Biz/{0}/{1}/{2}", scene, folderName, filename);
+            filepath = string.Format ("Assets/BIZ_Res/{0}/{1}/{2}", scene, folderName, filename);
             AudioClip ac = null;
 #if UNITY_EDITOR
             ac = AssetDatabase.LoadAssetAtPath<AudioClip> (filepath);
@@ -134,7 +134,7 @@ public class AssetManager : ManagerBase<AssetManager> {
         }
 
         string abName = filename.ToLower () + ".unity3d";
-        filepath = string.Format ("Assets/Biz/{0}/{1}/{2}", scene, folderName, filename);
+        filepath = string.Format ("Assets/BIZ_Res/{0}/{1}/{2}", scene, folderName, filename);
         BundleLoader.ReadFileAsync<AudioClip> (scene, filepath, abName, cb);
     }
 }

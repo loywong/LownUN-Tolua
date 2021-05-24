@@ -2,7 +2,7 @@
 
 public static class LuaConst
 {
-    public static string luaDir = Application.dataPath + "/Biz";                //lua逻辑代码目录
+    public static string luaDir = Application.dataPath + "/BIZ_Scr";                //lua逻辑代码目录
     public static string toluaDir = Application.dataPath + "/LuaLib/ToLua/Lua"; //tolua lua文件目录
 
 #if UNITY_STANDALONE

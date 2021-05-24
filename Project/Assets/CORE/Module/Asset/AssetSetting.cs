@@ -12,7 +12,7 @@ using UnityEngine;
 
 public class AssetSetting {
     // 所有业务资源的根目录
-    public static readonly string BizFolderName = "Biz";
+    public static readonly string BizFolderName = "Biz_Src";
     public static readonly string BizPath_Absolute = Application.dataPath + "/" + BizFolderName;
     // 所有业务资源打成Bundle的所在目录
     public static readonly string StreamingAssetPath = Application.dataPath + "/StreamingAssets";
