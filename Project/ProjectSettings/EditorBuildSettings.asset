@@ -6,21 +6,21 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Entry.unity
+    path: Assets/Startup.unity
     guid: 21f18be2be1053e46a76fb4e29e35f94
   - enabled: 1
-    path: Assets/Scene_Splash.unity
+    path: Assets/Splash.unity
     guid: ce0e63097d7c0784e83c001a57ae59b9
   - enabled: 1
-    path: Assets/Scene_NewPlayer.unity
+    path: Assets/NewPlayer.unity
     guid: 27a73da1e5621bc42b5ba65a1cb8ea34
   - enabled: 1
-    path: Assets/Scene_Login.unity
+    path: Assets/Login.unity
     guid: dbb79a3d0c1dfd24a93c97963db76c87
   - enabled: 1
-    path: Assets/Scene_Lobby.unity
+    path: Assets/Lobby.unity
     guid: b18ae06e3a48c3240901f7b65490b1e1
   - enabled: 1
-    path: Assets/Scene_Battle.unity
+    path: Assets/Battle.unity
     guid: b3e168519254f3c419b38884bb3fdec5
   m_configObjects: {}

@@ -1,19 +1,30 @@
 ----------------------------------------------------------------
 -- File			: Assets\Biz\_Comn\Lua\LuaFuncs.lua
 -- Author		: www.loywong.com
--- Company		: ??? Co.,Ltd
 -- COPYRIGHT	: (C)
 -- Date			: 2019/07/29
--- Description	: desc
+-- Description	: Lua全局通用方法
 -- Version		: 1.0
 -- Maintain		: //[date] desc
 ----------------------------------------------------------------
 
 -- 取消Lua对象的引用，等待垃圾回收
+-- 以便下一次重新require一个脚本时，重新初始化一次该lua脚本
 function unrequire(name)
+    -- 注意 因为package.loaded里面存储的key格式是 例如 Lobby.LobbyCtrl
+    -- 所以需要把 unrequire时输入的路径的/替换为.
+    local loadname = string.gsub(name,"/",".")
+
     package.loaded[name] = nil
     package.preload[name] = nil
-    _G[name] = nil
+
+    -- 因为_G对象内部存储的Key是对象名，不是路径形式
+    local gElements = string.split(name, "/")
+    local gKey = table.Last(gElements)
+    -- logError("gKey: "..tostring(gKey))
+    if gKey ~= nil then
+        _G[name] = nil
+    end
 end
 
 -- 浅拷贝

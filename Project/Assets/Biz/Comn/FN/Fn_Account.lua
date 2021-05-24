@@ -1,7 +1,6 @@
 ----------------------------------------------------------------
 -- File			: Assets\Biz\_FN\Fn_Account.lua
 -- Author		: www.loywong.com
--- Company		: ??? Co.,Ltd
 -- COPYRIGHT	: (C)
 -- Date			: 2019/07/29
 -- Description	: 这里只存储一些玩家自己的专用的账号信息！！！

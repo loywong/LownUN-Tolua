@@ -12,3 +12,16 @@ function string.split(s, pattern)
     return rt
 end
 
+-- 取Table的最后一个对象
+function table.Last(t)
+    if t == nil then
+        return nil
+    end
+    
+    if type(t) ~= "table" then
+        return nil
+    end
+
+    local length = table.GetCount(t)
+    return t[length]
+end

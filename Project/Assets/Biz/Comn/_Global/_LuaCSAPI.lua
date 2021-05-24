@@ -1,7 +1,6 @@
 ----------------------------------------------------------------
 -- File			: Assets\Biz\Comn\_Global\LuaDefine.lua
 -- Author		: www.loywong.com
--- Company		: ??? Co.,Ltd
 -- COPYRIGHT	: (C)
 -- Date			: 2019/08/17
 -- Description	: （编辑器）针对编辑器代码提示的Lua全局变量定义，提升Lua编程效率
