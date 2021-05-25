@@ -18,7 +18,7 @@ function this.Awake(transform)
      
     print(this.btn_enterLobby.gameObject.name)
     -- 注册事件
-    LuaFuncsUI.SetClickCallback(this.btn_enterLobby.gameObject, this.OnClickEntryBattle)
+    inputmanager.SetClickCallback(this.btn_enterLobby.gameObject, this.OnClickEntryBattle)
 end
 
 function this.OnClickEntryBattle()
