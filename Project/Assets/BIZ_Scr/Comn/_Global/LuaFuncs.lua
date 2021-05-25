@@ -8,6 +8,12 @@
 -- Maintain		: //[date] desc
 ----------------------------------------------------------------
 
+-- 程序运行在编辑器模式下，此时必然也是（内网）开发环境下
+function IsEditor()
+    return UnityApplication.IsEditor
+end
+
+
 -- 取消Lua对象的引用，等待垃圾回收
 -- 以便下一次重新require一个脚本时，重新初始化一次该lua脚本
 function unrequire(name)
