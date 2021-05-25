@@ -19,9 +19,9 @@ function this.SetAccountInfo()
 end
 
 -- TEST protobuf of lua person_pb
-require "Comn/DT/Def_Proto/login_pb"
+require "DT/Def_Proto/login_pb"
 local login_pb = require "login_pb"
-require "Comn/DT/Def_Proto/person_pb"
+require "DT/Def_Proto/person_pb"
 local person_pb = require "person_pb"
 
 local pb_data

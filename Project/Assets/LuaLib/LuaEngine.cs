@@ -104,7 +104,7 @@ public class LuaEngine : ManagerVIBase<LuaEngine> {
 
     // 场景通用 
     private void StartGlobal () {
-        string filepath = "Comn/Lua_Require.lua";
+        string filepath = "Lua_Require.lua";
         lua.DoFile (filepath);
     }
 

@@ -104,13 +104,13 @@ public class Entry : MonoBehaviour {
         Test ();
 
         // HACK
-        LuaEngine.Instance.OnStart ("Comn/FN/Fn_Login.lua");
+        LuaEngine.Instance.OnStart ("FN/Fn_Login.lua");
         
         // 需完善热更逻辑
         // AssetUpdate.Instance.OnStart (
         //     () => {
         //         Log.Green ("workflow", "Entry{} StartLogic() when hotupdate check over!");
-        //         LuaEngine.Instance.OnStart ("Comn/FN/Fn_Login.lua");
+        //         LuaEngine.Instance.OnStart ("FN/Fn_Login.lua");
         //     },
         //     () => { OnStart (true); }
         // );
