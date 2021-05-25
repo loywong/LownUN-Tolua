@@ -1,4 +1,4 @@
-require("Core/LuaExtensions")
+require("Core/extensions")
 require("Core/LuaFuncs")
 require("Core/LuaFuncsUI")
 
