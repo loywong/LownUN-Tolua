@@ -26,4 +26,4 @@ function this.LinkGameServer()
     print("____________________________ Fn_Login, LinkGameServer()")
 end
 
-Fn_Login.OnStart()
+-- Fn_Login.OnStart()

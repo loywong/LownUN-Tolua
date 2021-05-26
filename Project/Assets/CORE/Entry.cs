@@ -16,8 +16,6 @@
  * Maintain		: //[date] desc
  ****************************************************************/
 
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class Entry : MonoBehaviour {
@@ -75,8 +73,8 @@ public class Entry : MonoBehaviour {
 
         // 启动游戏一定会经过一轮初始化
         if (!isHotUpdate) {
-            // 1 lua虚拟机
-            LuaEngine.Instance.OnInit ();
+            // // 1 lua虚拟机
+            // LuaEngine.Instance.OnInit ();
 
             // 2 Util -----------------------------------
             TimeWatcher.Instance.OnInit ();
@@ -98,19 +96,32 @@ public class Entry : MonoBehaviour {
         this.StartLogic ();
     }
 
+    // ！！！热更新完成之后！！！ 各子系统启动 
+    private void StartLuaFramework () {
+        // Lua 框架初始化
+        LuaEngine.Instance.OnInit ();
+        LuaEngine.Instance.OnStart ("entry.lua");
+        LuaEngine.Instance.CallFunction ("entry.OnStart");
+
+        // hasLuaStarted = true;
+    }
+
     private void StartLogic () {
         Log.Green ("workflow", "Entry{} asset hotupdate check!!!");
 
         Test ();
 
         // HACK
-        LuaEngine.Instance.OnStart ("FN/Fn_Login.lua");
+        // LuaEngine.Instance.OnStart ("FN/Fn_Login.lua");
+        // LuaEngine.Instance.CallFunction ("LuaEntry.OnStart");
+        StartLuaFramework();
         
         // 需完善热更逻辑
         // AssetUpdate.Instance.OnStart (
         //     () => {
         //         Log.Green ("workflow", "Entry{} StartLogic() when hotupdate check over!");
-        //         LuaEngine.Instance.OnStart ("FN/Fn_Login.lua");
+        //         //LuaEngine.Instance.OnStart ("FN/Fn_Login.lua");
+        //         StartLuaFramework();
         //     },
         //     () => { OnStart (true); }
         // );
