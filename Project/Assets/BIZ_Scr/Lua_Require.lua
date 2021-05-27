@@ -11,9 +11,15 @@
 -- Maintain		: //[date] desc
 ----------------------------------------------------------------
 
+-- Core - Util
 require("Core/extensions")
-require("Core/LuaFuncs")
+require("Core/functions")
+
+-- Core - Module
 require("Core/inputmanager")
 
+-- Data
+
+-- FN
 require("FN/Fn_Account")
 require("FN/Fn_Login")
