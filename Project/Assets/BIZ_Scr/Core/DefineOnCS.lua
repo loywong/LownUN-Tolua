@@ -54,7 +54,7 @@ cstool = Util
 -- cslog = Log
 
 -- 游戏场景控制器
-gamecontroller = GameController
+-- gamecontroller = GameController
 
 
 -- 业务级 ------------------------------------------------------ 全小写
