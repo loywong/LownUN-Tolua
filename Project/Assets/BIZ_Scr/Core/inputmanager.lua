@@ -185,7 +185,7 @@ function this.AddEvent(obj, eventName, event)
     end
 
     local hy
-    Event = obj.gameobject:Getcomponent("InputEventTrigger")
+    hyEvent = obj.gameobject:Getcomponent("InputEventTrigger")
     if hyEvent == nil then
         hyEvent = obj - gameobject:AddComponent(typeof(InputEventTrigger))
     end

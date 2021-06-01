@@ -93,7 +93,7 @@ public class Entry : MonoBehaviour {
         }
 
 
-        this.StartLogic ();
+        StartLogic ();
     }
 
     // ！！！热更新完成之后！！！ 各子系统启动 
@@ -109,41 +109,15 @@ public class Entry : MonoBehaviour {
     private void StartLogic () {
         Log.Green ("workflow", "Entry{} asset hotupdate check!!!");
 
-        Test ();
-
         // HACK
-        // LuaEngine.Instance.OnStart ("FN/Fn_Login.lua");
-        // LuaEngine.Instance.CallFunction ("LuaEntry.OnStart");
         StartLuaFramework();
-        
         // 需完善热更逻辑
         // AssetUpdate.Instance.OnStart (
         //     () => {
         //         Log.Green ("workflow", "Entry{} StartLogic() when hotupdate check over!");
-        //         //LuaEngine.Instance.OnStart ("FN/Fn_Login.lua");
         //         StartLuaFramework();
         //     },
         //     () => { OnStart (true); }
         // );
-    }
-
-    private void Test () {
-        Debug.Log ("！！！Entry{} Test() 临时测试项 ----------- begin");
-
-        // // Test1 直接执行一个脚本
-        // gameObject.AddComponent<LuaBehaviourTest> ();
-
-        // // Test2 加载一个Prefab
-        // UIManager.Instance.LoadPanel ("Login", "UILogin", null, null, panel => {
-        //     Debug.Log ("加载 Login面板结束");
-        // });
-
-        // List<int> aaa = new List<int>(){1,3,4,2};
-        // aaa.Sort((x,y)=>{return x-y;});
-        // Debug.Log(aaa[0]);
-        // Debug.Log(aaa[1]);
-        // Debug.Log(aaa[2]);
-        
-        Debug.Log ("！！！Entry{} Test() 临时测试项 ----------- end");
     }
 }
