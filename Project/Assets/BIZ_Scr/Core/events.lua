@@ -2,7 +2,7 @@
 -- File			: Assets\BIZ_Scr\Core\events.lua
 -- Author		: www.loywong.com
 -- COPYRIGHT	: (C)
--- Date			: 2020/04/26
+-- Date			: 2019/07/29
 -- Description	: 事件侦听功能
 -- Version		: 1.0
 -- Maintain		: //[date] desc
@@ -21,14 +21,13 @@ function Event.RemoveListener(evt, handler)
     LowoEvent.RemoveListener(evt, handler)
 end
 
---Event Update
+-- Event Update ------------------------------------------------------- begin
 --所有的update
 local updateListenerFuncs = {}
 
 ---获取updateListener
----@param func需要添加到update的函数
----@param func函数的对象
-
+---@param func 需要添加到update的函数
+---@param func 函数的对象
 local function GetListener(func, obj)
     if func == nil then
         logError("event_update{} GetListener() 传⼊数有误!")
@@ -44,7 +43,7 @@ local function GetListener(func, obj)
 end
 
 ---添加函数到update中
----@param func需要添加到update的函数
+---@param func 需要添加到update的函数
 function Event.AddUpdate(func, obj)
     local listener = GetListener(func, obj)
     if listener == nil then
@@ -57,7 +56,7 @@ function Event.AddUpdate(func, obj)
 end
 
 ---从update中移除
----@param func需要的函数
+---@param func 需要的函数
 function Event.RemoveUpdate(func, obj)
     local listener = GetListener(func, obj)
     if listener == nil then
@@ -68,7 +67,6 @@ function Event.RemoveUpdate(func, obj)
     UpdateBeat:RemoveListener(listener)
     updateListenerFuncs[func] = nil
 end
-
 -- Event Update ------------------------------------------------------- end
 
 return Event
