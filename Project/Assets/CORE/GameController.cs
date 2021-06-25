@@ -83,7 +83,8 @@ public class GameController {
         //初始下下一个场景的对象
         // 1 音乐播放
         string bgm = "S_BGM_Lobby";
-        SoundManager.Instance.PlayBGM (bgm);
+        // SoundManager.Instance.PlayBGM (bgm);
+        AudioPoolManager.Instance.PlayMusic(bgm);
         // 2 Fn管理器
         // FnController.Instance.OnStart();
     }

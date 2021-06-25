@@ -12,6 +12,8 @@ public class UIManagerWrap
 		L.RegFunction("LoadPanel", LoadPanel);
 		L.RegFunction("LoadPanel2", LoadPanel2);
 		L.RegFunction("LoadDlg", LoadDlg);
+		L.RegFunction("ShowWaiting", ShowWaiting);
+		L.RegFunction("HideWaiting", HideWaiting);
 		L.RegFunction("ClearForSceneChange", ClearForSceneChange);
 		L.RegFunction("__eq", op_Equality);
 		L.RegFunction("__tostring", ToLua.op_ToString);
@@ -141,6 +143,38 @@ public class UIManagerWrap
 			UnityEngine.Transform arg2 = (UnityEngine.Transform)ToLua.CheckObject<UnityEngine.Transform>(L, 4);
 			bool arg3 = LuaDLL.luaL_checkboolean(L, 5);
 			obj.LoadDlg(arg0, arg1, arg2, arg3);
+			return 0;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int ShowWaiting(IntPtr L)
+	{
+		try
+		{
+			ToLua.CheckArgsCount(L, 1);
+			UIManager obj = (UIManager)ToLua.CheckObject<UIManager>(L, 1);
+			obj.ShowWaiting();
+			return 0;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int HideWaiting(IntPtr L)
+	{
+		try
+		{
+			ToLua.CheckArgsCount(L, 1);
+			UIManager obj = (UIManager)ToLua.CheckObject<UIManager>(L, 1);
+			obj.HideWaiting();
 			return 0;
 		}
 		catch (Exception e)

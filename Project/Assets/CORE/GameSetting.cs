@@ -33,12 +33,27 @@ public class GameSetting {
     // 4：
     public static readonly bool isDebugMode = true;
 
-    // Env(Engine System)
-    public static void OnInit () {
+    public static void OnInitEngine () {
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
         Application.targetFrameRate = FrameRate;
     }
 
+    public static void OnInitData (object config) {
+        // var serverConfigData = AssetManager.Instance.LoadAsset<TextAsset>("Configs","GameConfig");
+        // var jd = LitJson
+        GameSetting.ServerType = null;
+        GameSetting.ServerID = null;
+        GameSetting.ChanelID = null;
+        GameSetting.ClientType = null;
+        GameSetting.FacebookID = null;
+        GameSetting.WebServerURL = null;
+        GameSetting.RunningMode = null;
+        GameSetting.LocaleConfig = null;
+
+        // Debug.Log("Game Config: " + config.text);
+        // hasGameSettingsInited = true;
+        Log.Green ("workflow", "<<<<<< Init Local Config End");
+    }
     public static void OnInitLog () {
         // Env(Engine System)
         Log.SetOpen(true/*读取本地配置*/);

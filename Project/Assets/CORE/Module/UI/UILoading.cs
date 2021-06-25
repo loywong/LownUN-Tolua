@@ -12,8 +12,8 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UISceneLoading : MonoBehaviour {
-    public static UISceneLoading Instance = null;
+public class UILoading : MonoBehaviour {
+    public static UILoading Instance = null;
 
     // 显示组件 -----------------------------------
     [SerializeField] private Slider sliderProgress = null;

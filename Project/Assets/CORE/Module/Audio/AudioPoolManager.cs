@@ -162,6 +162,9 @@ public class AudioPoolManager : ManagerBase<AudioPoolManager> {
     }
 
     public void PlayMusic (string clipName, float beginVolume = 0f, int assettype = 0, bool isOnlyInLevel = false) {
+        // HACK 2021/06/25 Audio功能还没完全调试完成
+        return;
+        
         if (!isGameShow)
             return;
 

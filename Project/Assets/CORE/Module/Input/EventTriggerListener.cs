@@ -1,4 +1,14 @@
-﻿using UnityEngine;
+﻿/****************************************************************
+ * File			: Assets\CORE\Module\Input\EventTriggerListener.cs
+ * Author		: www.loywong.com
+ * COPYRIGHT	: (C)
+ * Date			: 2019/10/24
+ * Description	: 对象可触发事件注册（将被废弃）
+ * Version		: 1.0
+ * Maintain		: [date] desc
+ ****************************************************************/
+
+using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class EventTriggerListener : UnityEngine.EventSystems.EventTrigger {

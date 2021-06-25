@@ -15,13 +15,11 @@ public static class LuaBinder
 		Enum_SceneWrap.Register(L);
 		GameControllerWrap.Register(L);
 		AssetManagerWrap.Register(L);
-		SoundManagerWrap.Register(L);
 		UIManagerWrap.Register(L);
 		GameObjectOpWrap.Register(L);
 		LogWrap.Register(L);
 		TimeWatcherWrap.Register(L);
 		ManagerBase_AssetManagerWrap.Register(L);
-		ManagerBase_SoundManagerWrap.Register(L);
 		ManagerVIBase_UIManagerWrap.Register(L);
 		ManagerVIBase_TimeWatcherWrap.Register(L);
 		L.BeginModule("LuaInterface");

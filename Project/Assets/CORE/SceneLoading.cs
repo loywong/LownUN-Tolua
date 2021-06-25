@@ -32,7 +32,7 @@ public class SceneLoading : ManagerVIBase<SceneLoading> {
         Log.Trace ("scene", "SceneLoading{} 111111111111");
         // 1-1 记住当前场景信息（TODO 这一步应该写在GameController上）
         // 1-2 打开loading界面(先打开Loading界面，再清理所有加载出来的界面（不包括特效(特效的父节点与场景绑定，生命周期与场景绑定)）)
-        UISceneLoading.Instance.OnStart ();
+        UILoading.Instance.OnStart ();
         // 1-3 清理 界面与Tween
         // DoTween.KillAll(true);
         UIManager.Instance.ClearForSceneChange ();
@@ -58,7 +58,7 @@ public class SceneLoading : ManagerVIBase<SceneLoading> {
             // AfterLoadAndClearPreScene ();
 
             // 关闭各种界面
-            UISceneLoading.Instance.OnEnd ();
+            UILoading.Instance.OnEnd ();
             // 发出完成通知！！！
             if (cbComplete != null)
                 cbComplete ();
@@ -70,7 +70,7 @@ public class SceneLoading : ManagerVIBase<SceneLoading> {
             // yield return new WaitForSeconds (0.5f);
 
             // 关闭各种界面
-            UISceneLoading.Instance.OnEnd ();
+            UILoading.Instance.OnEnd ();
             // 发出完成通知！！！
             if (cbComplete != null)
                 cbComplete ();
@@ -87,7 +87,7 @@ public class SceneLoading : ManagerVIBase<SceneLoading> {
 
     void Update () {
         // 场景正在加载中，且loading表现界面存在
-        if (!UISceneLoading.Instance.isValid)
+        if (!UILoading.Instance.isValid)
             return;
 
         if (asyncOP != null) {
@@ -100,7 +100,7 @@ public class SceneLoading : ManagerVIBase<SceneLoading> {
             } else {
                 prog = asyncOP.progress;
                 // if() 是否需要对progress进行处理
-                UISceneLoading.Instance.UpdateProgress (prog);
+                UILoading.Instance.UpdateProgress (prog);
             }
         }
     }

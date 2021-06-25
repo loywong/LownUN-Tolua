@@ -12,8 +12,20 @@
                 4，热更检测
                     更新：开始更新逻辑，等待更新完成，重新走启动流程！！！
                     不更新：调用Lua脚本开始逻辑
- * Version		: 1.0
- * Maintain		: //[date] desc
+ * Version		: 2.0
+ * Maintain		: [2020/04] 初始化运行程序的流程
+                0，Env/INI 环境，框架
+                1，Util
+                2，Module
+                3，Feature
+                BIZ
+                1，Data
+                2，Start Logic
+                    0，检测热更
+                    1，有热更则热更，热更结束重新调用Entry的 Start方法
+                        1 Data
+                        2 Start Ingame（Lua）
+                    2，Start Ingame（Lua）
  ****************************************************************/
 
 using UnityEngine;
@@ -51,19 +63,18 @@ public class Entry : MonoBehaviour {
     /// <param name="isHotUpdate">正常流程时 False，热更之后重新初始化的流程 True</param>
     void Start () {
         // 0 Env
-        GameSetting.OnInit();
-
-        // 1 config
-        Init_Config();
-        // 2 local
-        // LocaleManager.Instance.OnInit();
+        Log.Green ("workflow", ">>>>>> Init Local Config");
+        GameSetting.OnInitEngine();
 
         // 启动游戏一定会经过一轮初始化
-        Init_Module();
-        
-        // LogSetting.OnInit ();
-        GameSetting.OnInitLog();
+        Init_Framework();
         Test ();
+        
+        // 1 config
+        GameSetting.OnInitData(AssetManager.Instance.LoadAsset<TextAsset>("Configs","GameConfig"));
+        // LocaleManager.Instance.OnInit();
+        GameSetting.OnInitLog();
+
 
         #if UNITY_EDITOR
             Debug.Log ("Entry{} OnStart() with isHotUpdate: " + isHotUpdate);
@@ -72,96 +83,49 @@ public class Entry : MonoBehaviour {
         #endif
 
         if(isHotUpdate) {
-            // AssetVerManager
             AssetUpdate.Instance.OnStart (
                 (progress) => {
                     // 更新进度中。。。
                 },
                 (hasValidUpdate) => { 
                     if(hasValidUpdate){
+                        Log.Green ("workflow", ">>>>>> Init Local Config Start");
                         // 热更之后，再一次初始化游戏设置配置信息！！！
-                        // OnStart (true); 
-                        Init_Config();
-                        // 2 local
+                        GameSetting.OnInitData(AssetManager.Instance.LoadAsset<TextAsset>("Configs","GameConfig"));
                         // LocaleManager.Instance.OnInit();
-
                         GameSetting.OnInitLog();
                     }
 
-                    Log.Green ("workflow", "Entry{} StartLogic() when hotupdate is over!");
+                    Log.Green ("workflow", "Entry{} StartIngame() when hotupdate is over!");
                     StartIngame();
                 }
             );
         } else {
-            Log.Error ("workflow", "Entry{} StartLogic() when hotupdate disabled!");
+            Log.Error ("workflow", "Entry{} StartIngame() when hotupdate disabled!");
             StartIngame();
         }
     }
 
-    private void Init_Config() {
-        Log.Green ("workflow", ">>>>>> Init_Config Start");
-        // var serverConfigData = AssetManager.Instance.LoadAsset<TextAsset>("Configs","GameConfig");
-        // var jd = LitJson
-        GameSetting.ServerType = null;
-        GameSetting.ServerID = null;
-        GameSetting.ChanelID = null;
-        GameSetting.ClientType = null;
-        GameSetting.FacebookID = null;
-        GameSetting.WebServerURL = null;
-        GameSetting.RunningMode = null;
-        GameSetting.LocaleConfig = null;
-
-        // Debug.Log("Game Config: " + serverConfigData.text);
-        // hasGameSettingsInited = true;
-        Log.Green ("workflow", "<<<<<< Init_Config End");
-    }
-
-    private void Init_Module(){
-        // 0 lua虚拟机
+    private void Init_Framework(){
+        // lua虚拟机
         LuaEngine.Instance.OnInit ();
 
-        // 1 Data
-
-        // 2 Util -----------------------------------
+        // Util -----------------------------------
         TimeWatcher.Instance.OnInit ();
         SceneLoading.Instance.OnInit ();
 
-        // 3 Moduel ---------------------------------
+        // Moduel ---------------------------------
+        NetManager.Instance.OnInit();
+        HttpManager.Instance.OnInit();
         InputManager.Instance.OnInit();
         UIManager.Instance.OnInit ();
-        
-        // NetManager.Instance.OnInit();
-        // HttpManager.Instance.OnInit();
-        // // InputManager.Instance.OnInit();
-        // InputFullscreen.Instance.OnInit();
+        AssetUpdate.Instance.OnInit();
 
-        // UIManager.Instance.OnInit ();
-        // // SoundManager.Instance.OnInit();
-        // EffectManager.Instance.OnInit();
-        
-        AssetUpdate.Instance.OnInit();//AssetVerManager
-
-        // 4 Fn(Feature) ----------------------------
-        // 游戏内业务完全由Lua层处理
+        // Fn(Feature) ----------------------------
     }
-
-    /// <summary>
-    /// 初始化运行程序的流程
-    /// 0，Env/INI 环境，框架
-    /// 1，Util
-    /// 2，Module
-    /// 3，Feature
-    /// 4，Start Logic（Lua）
-    ///     1，检测热更
-    ///     2，有热更则热更，热更结束重新调用Entry的 Start方法
-    /// </summary>
-
 
     // 不管哪种流程，此函数只执行一次
     private void StartIngame () {
-        // Lua 框架初始化
-        // LuaEngine.Instance.OnInit ();
-
         LuaEngine.Instance.OnStart ("entry.lua");
         LuaEngine.Instance.CallFunction ("entry.OnStart");
 

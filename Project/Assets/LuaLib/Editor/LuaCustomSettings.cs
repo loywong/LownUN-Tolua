@@ -166,7 +166,7 @@ public static class CustomSettings {
         _GT (typeof (AssetManager)),
         // _GT(typeof(Pool_Eff)),
         // _GT(typeof(Pool_Model)),
-        _GT (typeof (SoundManager)),
+        // _GT (typeof (SoundManager)),
         _GT (typeof (UIManager)),
         _GT (typeof (GameObjectOp)),
 

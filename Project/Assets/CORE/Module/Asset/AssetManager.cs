@@ -137,4 +137,8 @@ public class AssetManager : ManagerBase<AssetManager> {
         filepath = string.Format ("Assets/BIZ_Res/{0}/{1}/{2}", scene, folderName, filename);
         BundleLoader.ReadFileAsync<AudioClip> (scene, filepath, abName, cb);
     }
+
+    public T LoadAsset<T> (string abname, string assetname, int assetType = 0) where T : UnityEngine.Object {
+        return null;
+    }
 }
