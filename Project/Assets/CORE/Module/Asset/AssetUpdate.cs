@@ -16,17 +16,28 @@
 using System;
 
 public class AssetUpdate : ManagerBase<AssetUpdate> {
-    private Action cbNotUpdate = null;
-    private Action cbUpdateComplete = null;
+    // private Action cbNotUpdate = null;
+    private Action<float> cbUpdating = null;
+    private Action<bool> cbUpdateComplete = null;
 
-    public void OnStart (Action cbNotUpdate, Action cbUpdateComplete) {
-        this.cbNotUpdate = cbNotUpdate;
+    // public void OnStart (Action cbNotUpdate, Action cbUpdateComplete) {
+    //     this.cbNotUpdate = cbNotUpdate;
+    //     this.cbUpdateComplete = cbUpdateComplete;
+
+    //     // http 开始获取远程热更文件对照表！！！
+    //     // HACK
+    //     if (cbNotUpdate != null)
+    //         cbNotUpdate ();
+    // }
+
+    public void OnStart (Action<float> cbUpdating, Action<bool> cbUpdateComplete) {
+        this.cbUpdating = cbUpdating;
         this.cbUpdateComplete = cbUpdateComplete;
 
-        // http 开始获取远程热更文件对照表！！！
-        // HACK
-        if (cbNotUpdate != null)
-            cbNotUpdate ();
+        // TEMP
+        // 如果版本号相同或者其他原因，则判定这不是一次有效更新
+        bool hasValidUpdate = false;
+        cbUpdateComplete(hasValidUpdate);
     }
 
     // 进度
