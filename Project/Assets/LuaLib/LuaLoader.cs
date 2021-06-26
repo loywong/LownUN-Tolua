@@ -22,7 +22,7 @@ public class LuaLoader : LuaFileUtils {
     public override byte[] ReadFile (string fileRelativePath) {
         Log.Gray ("lua", "LuaLoader{} ReadFile() 111 fileRelativePath: " + fileRelativePath);
         // case 1
-        if (!AssetManager.Instance.isLoadByBundle)
+        if (!GameSetting.isBundle)
             return base.ReadFile (fileRelativePath);
 
         // case 2

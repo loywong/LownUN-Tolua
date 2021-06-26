@@ -15,7 +15,7 @@
 
 using System;
 
-public class AssetUpdate : ManagerBase<AssetUpdate> {
+public class AssetUpdate : ManagerVIBase<AssetUpdate> {
     // private Action cbNotUpdate = null;
     private Action<float> cbUpdating = null;
     private Action<bool> cbUpdateComplete = null;

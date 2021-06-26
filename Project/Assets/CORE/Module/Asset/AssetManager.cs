@@ -34,17 +34,6 @@ public enum Enum_Asset_Prefab {
 public class AssetManager : ManagerBase<AssetManager> {
     private Dictionary<string, AssetBundle> luaAssets = new Dictionary<string, AssetBundle> ();
 
-    // 资源加载方式 1, 编辑器模式路径 2，bundle包
-    // PS：如果在编辑器状态需要强制改为Bundle加载，则手动修改
-    public bool isLoadByBundle {
-        get {
-#if UNITY_EDITOR
-            return false;
-#endif
-            return true;
-        }
-    }
-
     /// <summary>
     /// 
     /// </summary>
@@ -81,7 +70,7 @@ public class AssetManager : ManagerBase<AssetManager> {
         // 编辑器状态运行时，不受文件名大小写的影响
         string folderName = "";
 
-        if (!isLoadByBundle) {
+        if (!GameSetting.isBundle) {
             folderName = prefabType.ToString ();
 
             // 矫正没有.prefab后缀的Prefab文件
@@ -122,7 +111,7 @@ public class AssetManager : ManagerBase<AssetManager> {
         string filepath = "";
         string folderName = "Sound";
 
-        if (!isLoadByBundle) {
+        if (!GameSetting.isBundle) {
             filepath = string.Format ("Assets/BIZ_Res/{0}/{1}/{2}", scene, folderName, filename);
             AudioClip ac = null;
 #if UNITY_EDITOR

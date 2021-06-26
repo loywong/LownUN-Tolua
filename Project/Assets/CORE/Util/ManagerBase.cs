@@ -8,6 +8,7 @@
  * Maintain		: //[date] desc
  ****************************************************************/
 
+using System;
 using UnityEngine;
 
 public class ManagerBase<T> where T : new () {
@@ -16,13 +17,9 @@ public class ManagerBase<T> where T : new () {
     public static T Instance {
         get {
             if (_Instance == null)
-                _Instance = new T ();
+                _Instance = Activator.CreateInstance<T> ();//new T ();
             return _Instance;
         }
-    }
-
-    public virtual void OnInit () {
-
     }
 }
 
@@ -49,6 +46,6 @@ public class ManagerVIBase<T> : MonoBehaviour where T : MonoBehaviour {
     }
 
     public virtual void OnInit () {
-
+        Debug.Log(string.Format("【{0}】of MonoBehaviour type oninited!",typeof(T).ToString()));
     }
 }

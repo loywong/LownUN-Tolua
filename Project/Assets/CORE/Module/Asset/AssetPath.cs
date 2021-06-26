@@ -36,7 +36,7 @@ public class AssetPath {
                 if (Application.isMobilePlatform) {
                     _ResFolder_Update = Application.persistentDataPath + "/" + Application.productName;
                 } else {
-                    // if (!AssetManager.Instance.isLoadByBundle)
+                    // if (!GameSetting.isBundle)
                     //     _UpdateFolder = AssetSetting.BizRootPath;
                     // else
                     _ResFolder_Update = ProjPath + "BuildAsset_New";
@@ -60,7 +60,7 @@ public class AssetPath {
                         _ResFolder_Inner = Application.dataPath + "@/!assets";
                         break;
                     default:
-                        // if (!AssetManager.Instance.isLoadByBundle)
+                        // if (!GameSetting.isBundle)
                         //     _AppResFolder = AssetSetting.BizRootPath;
                         // else
                         _ResFolder_Inner = AssetSetting.StreamingAssetPath;

@@ -6,8 +6,7 @@ public class UIManagerWrap
 {
 	public static void Register(LuaState L)
 	{
-		L.BeginClass(typeof(UIManager), typeof(ManagerVIBase<UIManager>));
-		L.RegFunction("OnInit", OnInit);
+		L.BeginClass(typeof(UIManager), typeof(UnityEngine.MonoBehaviour));
 		L.RegFunction("LoadSceneBase", LoadSceneBase);
 		L.RegFunction("LoadPanel", LoadPanel);
 		L.RegFunction("LoadPanel2", LoadPanel2);
@@ -18,23 +17,8 @@ public class UIManagerWrap
 		L.RegFunction("__eq", op_Equality);
 		L.RegFunction("__tostring", ToLua.op_ToString);
 		L.RegVar("uiCamera", get_uiCamera, set_uiCamera);
+		L.RegVar("Instance", get_Instance, null);
 		L.EndClass();
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int OnInit(IntPtr L)
-	{
-		try
-		{
-			ToLua.CheckArgsCount(L, 1);
-			UIManager obj = (UIManager)ToLua.CheckObject<UIManager>(L, 1);
-			obj.OnInit();
-			return 0;
-		}
-		catch (Exception e)
-		{
-			return LuaDLL.toluaL_exception(L, e);
-		}
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
@@ -233,6 +217,20 @@ public class UIManagerWrap
 		catch(Exception e)
 		{
 			return LuaDLL.toluaL_exception(L, e, o, "attempt to index uiCamera on a nil value");
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_Instance(IntPtr L)
+	{
+		try
+		{
+			ToLua.Push(L, UIManager.Instance);
+			return 1;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
 		}
 	}
 

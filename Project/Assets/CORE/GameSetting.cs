@@ -20,11 +20,22 @@ public class GameSetting {
     public static string ClientType = "";
     public static string FacebookID = "";
     public static string WebServerURL = "";
-    public static string RunningMode = "";
+    public static Enum_RunningMode RunningMode = Enum_RunningMode.Develop;
     public static string LocaleConfig = "";
     //------------------------------------------- end
 
-    public static readonly int FrameRate = 60;
+    // 资源加载方式 1, 编辑器模式路径 2，bundle包 // PS：如果在编辑器状态需要强制改为Bundle加载，则手动修改
+    // public static bool isBundle { get { return RunningMode == Enum_RunningMode.Develop_Bundle || RunningMode == Enum_RunningMode.Official; } }
+    public static bool isBundle {
+        get {
+#if UNITY_EDITOR
+            return false;
+#endif
+            return true;
+        }
+    }
+
+    public static bool isBundle_needUpdate { get { return RunningMode == Enum_RunningMode.Official; } }
 
     // 调试模式，控制的对象有：
     // 1：Log输出
@@ -34,8 +45,12 @@ public class GameSetting {
     public static readonly bool isDebugMode = true;
 
     public static void OnInitEngine () {
+        // 运行时 操作系统不休眠（强制）
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
-        Application.targetFrameRate = FrameRate;
+        // 游戏帧率
+        Application.targetFrameRate = 60;
+        // 多点触控开关
+        Input.multiTouchEnabled = false;
     }
 
     public static void OnInitData (object config) {
@@ -47,7 +62,7 @@ public class GameSetting {
         GameSetting.ClientType = null;
         GameSetting.FacebookID = null;
         GameSetting.WebServerURL = null;
-        GameSetting.RunningMode = null;
+        GameSetting.RunningMode = (Enum_RunningMode) (1);
         GameSetting.LocaleConfig = null;
 
         // Debug.Log("Game Config: " + config.text);
@@ -56,7 +71,7 @@ public class GameSetting {
     }
     public static void OnInitLog () {
         // Env(Engine System)
-        Log.SetOpen(true/*读取本地配置*/);
+        Log.SetOpen (true /*读取本地配置*/ );
 
         // Core
         // Log.OpenTag ("editor");

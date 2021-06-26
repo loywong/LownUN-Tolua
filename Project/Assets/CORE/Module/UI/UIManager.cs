@@ -14,8 +14,12 @@ using System.Collections.Generic;
 using LuaInterface;
 using UnityEngine;
 
-public class UIManager : ManagerVIBase<UIManager> {
+// public class UIManager : ManagerVIBase<UIManager> {
+public class UIManager : MonoBehaviour {
+    public static UIManager Instance {get; private set;}
+
     // 所有UI的主相机（非overlay模式）
+    [HideInInspector]
     public Camera uiCamera = null;
 
     // 场景默认UI的父节点
@@ -28,8 +32,11 @@ public class UIManager : ManagerVIBase<UIManager> {
     // 用于控制普通面板的显示隐藏关系（始终只显示最顶层面板）
     private Stack<GameObject> normalPanels = new Stack<GameObject> ();
 
-    public override void OnInit () {
-        DontDestroyOnLoad (GameObject.Find ("Canvas"));
+    // public override void OnInit () {
+    void Awake () {
+        // DontDestroyOnLoad (GameObject.Find ("Canvas"));
+        DontDestroyOnLoad (this);
+        Instance = this;
 
         uiCamera = GameObject.Find ("Canvas/UICamera").GetComponent<Camera> ();
         rootScene = GameObject.Find ("Canvas/Root_Scene").transform;

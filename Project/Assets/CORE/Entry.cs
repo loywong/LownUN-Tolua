@@ -67,7 +67,8 @@ public class Entry : MonoBehaviour {
         GameSetting.OnInitEngine();
 
         // 启动游戏一定会经过一轮初始化
-        Init_Framework();
+        Init_Module();
+        // HACK
         Test ();
         
         // 1 config
@@ -106,26 +107,22 @@ public class Entry : MonoBehaviour {
         }
     }
 
-    private void Init_Framework(){
-        // lua虚拟机
-        LuaEngine.Instance.OnInit ();
+    private void Init_Module(){
+        // AppFacade.Instance.OnInit();
+        LuaEngine.Instance.OnInit();
 
-        // Util -----------------------------------
-        TimeWatcher.Instance.OnInit ();
-        SceneLoading.Instance.OnInit ();
-
-        // Moduel ---------------------------------
         NetManager.Instance.OnInit();
-        HttpManager.Instance.OnInit();
+        // HttpManager.Instance.OnInit();
         InputManager.Instance.OnInit();
-        UIManager.Instance.OnInit ();
+        // UIManager.Instance.OnInit ();
         AssetUpdate.Instance.OnInit();
-
-        // Fn(Feature) ----------------------------
     }
 
     // 不管哪种流程，此函数只执行一次
     private void StartIngame () {
+        // lua虚拟机
+        // LuaEngine.Instance.OnInit ();
+        LuaEngine.Instance.OnStart ();
         LuaEngine.Instance.OnStart ("entry.lua");
         LuaEngine.Instance.CallFunction ("entry.OnStart");
 

@@ -9,7 +9,7 @@
  * Maintain		: //[date] desc
  ****************************************************************/
 
-public class NetManager : ManagerBase<NetManager> {
+public class NetManager : ManagerVIBase<NetManager> {
 
 
     // Start is called before the first frame update

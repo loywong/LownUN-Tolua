@@ -20,7 +20,6 @@ public static class LuaBinder
 		LogWrap.Register(L);
 		TimeWatcherWrap.Register(L);
 		ManagerBase_AssetManagerWrap.Register(L);
-		ManagerVIBase_UIManagerWrap.Register(L);
 		ManagerVIBase_TimeWatcherWrap.Register(L);
 		L.BeginModule("LuaInterface");
 		LuaInterface_LuaInjectionStationWrap.Register(L);

@@ -12,7 +12,6 @@ public class AssetManagerWrap
 		L.RegFunction("LoadAudio", LoadAudio);
 		L.RegFunction("New", _CreateAssetManager);
 		L.RegFunction("__tostring", ToLua.op_ToString);
-		L.RegVar("isLoadByBundle", get_isLoadByBundle, null);
 		L.EndClass();
 	}
 
@@ -96,25 +95,6 @@ public class AssetManagerWrap
 		catch (Exception e)
 		{
 			return LuaDLL.toluaL_exception(L, e);
-		}
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int get_isLoadByBundle(IntPtr L)
-	{
-		object o = null;
-
-		try
-		{
-			o = ToLua.ToObject(L, 1);
-			AssetManager obj = (AssetManager)o;
-			bool ret = obj.isLoadByBundle;
-			LuaDLL.lua_pushboolean(L, ret);
-			return 1;
-		}
-		catch(Exception e)
-		{
-			return LuaDLL.toluaL_exception(L, e, o, "attempt to index isLoadByBundle on a nil value");
 		}
 	}
 }

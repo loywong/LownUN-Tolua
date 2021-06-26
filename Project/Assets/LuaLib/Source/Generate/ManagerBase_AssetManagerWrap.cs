@@ -7,7 +7,6 @@ public class ManagerBase_AssetManagerWrap
 	public static void Register(LuaState L)
 	{
 		L.BeginClass(typeof(ManagerBase<AssetManager>), typeof(System.Object), "ManagerBase_AssetManager");
-		L.RegFunction("OnInit", OnInit);
 		L.RegFunction("New", _CreateManagerBase_AssetManager);
 		L.RegFunction("__tostring", ToLua.op_ToString);
 		L.RegVar("Instance", get_Instance, null);
@@ -31,22 +30,6 @@ public class ManagerBase_AssetManagerWrap
 			{
 				return LuaDLL.luaL_throw(L, "invalid arguments to ctor method: ManagerBase<AssetManager>.New");
 			}
-		}
-		catch (Exception e)
-		{
-			return LuaDLL.toluaL_exception(L, e);
-		}
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int OnInit(IntPtr L)
-	{
-		try
-		{
-			ToLua.CheckArgsCount(L, 1);
-			ManagerBase<AssetManager> obj = (ManagerBase<AssetManager>)ToLua.CheckObject<ManagerBase<AssetManager>>(L, 1);
-			obj.OnInit();
-			return 0;
 		}
 		catch (Exception e)
 		{
