@@ -112,16 +112,12 @@ public class Entry : MonoBehaviour {
         LuaEngine.Instance.OnInit();
 
         NetManager.Instance.OnInit();
-        // HttpManager.Instance.OnInit();
         InputManager.Instance.OnInit();
-        // UIManager.Instance.OnInit ();
         AssetUpdate.Instance.OnInit();
     }
 
     // 不管哪种流程，此函数只执行一次
     private void StartIngame () {
-        // lua虚拟机
-        // LuaEngine.Instance.OnInit ();
         LuaEngine.Instance.OnStart ();
         LuaEngine.Instance.OnStart ("entry.lua");
         LuaEngine.Instance.CallFunction ("entry.OnStart");

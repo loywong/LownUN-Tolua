@@ -1,4 +1,14 @@
-﻿using LuaInterface;
+﻿/****************************************************************
+ * File			: Assets\LuaLib\LuaEngine.cs
+ * Author		: www.loywong.com
+ * COPYRIGHT	: (C)
+ * Date			: 2020/06/28
+ * Description	: Lua功能的主类
+ * Version		: 1.0
+ * Maintain		: [date] desc
+ ****************************************************************/
+
+using LuaInterface;
 using UnityEngine;
 
 public class LuaEngine : ManagerVIBase<LuaEngine> {
@@ -15,35 +25,19 @@ public class LuaEngine : ManagerVIBase<LuaEngine> {
     // -----------------------------------------------
 
     public override void OnInit () {
-        // ???加载所有的lua脚本进入内存
-        // 这一行的作用是什么？？？
         loader = new LuaLoader ();
-        // new LuaResLoader ();
         //创建lua虚拟机
         lua = new LuaState ();
-
         OpenLibs ();
-        //?
         lua.LuaSetTop (0);
 
         // 绑定lua虚拟机
         LuaBinder.Bind (lua);
-
-        // lua.Start ();
-
         // 1 在C#中直接使用Lua对象函数并获取返回值 （同时：使用Lua协程的话必须初始化 DelegateFactory）
         // ??? 2 在Lua中直接调用C#方法
         DelegateFactory.Init ();
-
         // ??? 可不可不注册 如果需要使用lua的协程，则当前类必须继承自 monobehaviour
         LuaCoroutine.Register (lua, this);
-
-        // // 不把Lua脚本打包成bundle的情况下，即一般是开发调试的模式下，需要添加业务Lua脚本的总目录
-        // if (!GameSetting.isBundle)
-        //     lua.AddSearchPath (AssetSetting.BizPath_Absolute);
-
-        // //执行通用的Controller lua脚本
-        // StartGlobal ();
     }
 
     private void InitLuaPath () {
@@ -52,12 +46,18 @@ public class LuaEngine : ManagerVIBase<LuaEngine> {
             lua.AddSearchPath (AssetSetting.BizPath_Absolute);
     }
 
+    private void InitLuaBundle () {
+        // TODO
+        // foreach (var bundleName in AssetManager.Instance.luaBundleList) {
+        //     loader.AddBundle (bundleName);
+        // }
+    }
+
     public void OnStart () {
-        // TODO 
-        // if(GameSetting.IsBundle)
-        //     InitLuaBundle();
-        // else
-        InitLuaPath ();
+        if (GameSetting.isBundle)
+            InitLuaBundle ();
+        else
+            InitLuaPath ();
 
         lua.Start ();
         StartLooper ();
@@ -74,9 +74,9 @@ public class LuaEngine : ManagerVIBase<LuaEngine> {
         // lua.OpenLibs (LuaDLL.luaopen_protobuf_c);
         lua.OpenLibs (LuaDLL.luaopen_struct);
         lua.OpenLibs (LuaDLL.luaopen_lpeg);
-// #if UNITY_STANDALONE_OSX || UNITY_EDITOR_OSX
+        // #if UNITY_STANDALONE_OSX || UNITY_EDITOR_OSX
         lua.OpenLibs (LuaDLL.luaopen_bit);
-// #endif
+        // #endif
         lua.OpenLibs (LuaDLL.luaopen_socket_core);
 
         OpenCJson ();
@@ -84,12 +84,12 @@ public class LuaEngine : ManagerVIBase<LuaEngine> {
 
     // cjson 比较特殊，只new了一个table，没有注册库，这里注册一下
     protected void OpenCJson () {
-        lua.LuaGetField(LuaIndexes.LUA_REGISTRYINDEX, "_LOADED");
-        lua.OpenLibs(LuaDLL.luaopen_cjson);
-        lua.LuaSetField(-2, "cjson");
+        lua.LuaGetField (LuaIndexes.LUA_REGISTRYINDEX, "_LOADED");
+        lua.OpenLibs (LuaDLL.luaopen_cjson);
+        lua.LuaSetField (-2, "cjson");
 
-        lua.OpenLibs(LuaDLL.luaopen_cjson_safe);
-        lua.LuaSetField(-2, "cjson.safe");
+        lua.OpenLibs (LuaDLL.luaopen_cjson_safe);
+        lua.LuaSetField (-2, "cjson.safe");
     }
 
     // 其他公共方法 //////////////////////////////////////////////////////////
@@ -126,12 +126,6 @@ public class LuaEngine : ManagerVIBase<LuaEngine> {
     //         return func.LazyCall (args);
 
     //     return null;
-    // }
-
-    // // 场景通用 
-    // private void StartGlobal () {
-    //     string filepath = "Lua_Require.lua";
-    //     lua.DoFile (filepath);
     // }
 
     public void OnStart (string filepath) {

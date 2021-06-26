@@ -4,13 +4,14 @@
  * COPYRIGHT	: (C)
  * Date			: 2019/08/02
  * Description	: 加载所有资源类型（全部采用异步的方式！）
-                1，复合资源：Prefab
-                2，原始资源：比如：场景，贴图，动画，音效
+                1,复合资源：Prefab
+                2,原始资源：比如：场景,贴图,动画,音效
  * Version		: 1.0
  * Maintain		: //[date] desc
  ****************************************************************/
 
 using System.Collections.Generic;
+using System.IO;
 using UnityEditor;
 using UnityEngine;
 
@@ -33,6 +34,23 @@ public enum Enum_Asset_Prefab {
 
 public class AssetManager : ManagerBase<AssetManager> {
     private Dictionary<string, AssetBundle> luaAssets = new Dictionary<string, AssetBundle> ();
+
+    // private Dictionary<string, AssetBundle> BundleCacheDict = new Dictionary<string, AssetBundle> ();
+    /// lua bundle 索引,用于lua框架初始化脚本加载路径
+    [HideInInspector]
+    public List<string> luaBundleList = new List<string> ();
+
+    ///应⽤程序内部资源路径
+    public static string InAppAssetPath { get { return Application.streamingAssetsPath + "/"; } }
+    ///应⽤程序外部可读写资源路径
+    public static string OutAppAssetPath {
+        get {
+            if (Application.isMobilePlatform)
+                return Application.persistentDataPath + "/Assets/";
+            else
+                return Application.dataPath.Replace ("Assets", "Assets_Persistent DataPath") + "/";
+        }
+    }
 
     /// <summary>
     /// 
@@ -61,13 +79,13 @@ public class AssetManager : ManagerBase<AssetManager> {
     /// 加载.prefab文件（异步）
     /// TODO 考虑 子类型：UI面板同步加载 其他子类型（model和effect）异步加载
     /// </summary>
-    /// <param name="scene">根据场景加载相应的prefab，找不到，则从场景通用目录查找（Comn），如果再找不到，则提示资源加载异常</param>
+    /// <param name="scene">根据场景加载相应的prefab,找不到,则从场景通用目录查找（Comn）,如果再找不到,则提示资源加载异常</param>
     /// <param name="prefabName"></param>
     /// <param name="prefabType"></param>
     /// <param name="cb"></param>
     public void LoadPrefab (string scene, string prefabName, Enum_Asset_Prefab prefabType, System.Action<GameObject> cb) {
         string filepath = "";
-        // 编辑器状态运行时，不受文件名大小写的影响
+        // 编辑器状态运行时,不受文件名大小写的影响
         string folderName = "";
 
         if (!GameSetting.isBundle) {
@@ -81,7 +99,7 @@ public class AssetManager : ManagerBase<AssetManager> {
             Log.Blue ("asset", "folderName: " + folderName);
             Log.Blue ("asset", "prefabName: " + prefabName);
             filepath = string.Format ("Assets/BIZ_Res/{0}/{1}/{2}", scene, folderName, prefabName);
-            Log.Gray ("asset","AssetManager LoadPrefab path is: " + filepath);
+            Log.Gray ("asset", "AssetManager LoadPrefab path is: " + filepath);
             GameObject go = null;
 #if UNITY_EDITOR
             go = AssetDatabase.LoadAssetAtPath<GameObject> (filepath);
@@ -93,7 +111,7 @@ public class AssetManager : ManagerBase<AssetManager> {
 
         folderName = prefabType.ToString ().ToLower ();
         filepath = string.Format ("Assets/BIZ_Res/{0}/{1}/{2}", scene, folderName, prefabName + ".prefab"); //, AssetSetting.PrefabExtName
-        
+
         // 和创建bundle时的规则一样！！！
         string abName = prefabName.ToLower () + ".unity3d";
         Debug.LogError ("@@@@@@@@@@ LoadPrefab abName: " + abName);
@@ -130,4 +148,30 @@ public class AssetManager : ManagerBase<AssetManager> {
     public T LoadAsset<T> (string abname, string assetname, int assetType = 0) where T : UnityEngine.Object {
         return null;
     }
+
+//     public AssetBundle LoadAssetBundle (string abName) {
+//         abName = abName.ToLower ();
+//         AssetBundle bundle = null;
+//         string bundlePath = OutAppAssetPath + abName;
+
+//         if (File.Exists (bundlePath)) {
+//             if (BundleCacheDict.ContainsKey (abName))
+//                 BundleCacheDict.TryGetValue (abName, out bundle);
+//             else {
+//                 LoadDependencies (abName);
+//                 bundle = AssetBundle.LoadFromFile (bundlePath);
+//                 if (bundle)
+//                     BundleCacheDict.Add (abName, bundle);
+//                 //Debug.Log Warning("Asset Manager{} Bundle缓存数量Bundle cacheD ict.count： “+Bundle CacheD ict.Count) ;
+//             }
+//         } else {
+// #if UNITY_EDITOR
+//             Debug.Log ("(可能是Resource下的资源.否则就是该资源没有更新AB名设置) 加载bundle失败.可忽略.资源加载失败会有红⾊⽇志：" + bundlePath);
+// #else
+//             Debug.Log("加载bundle失败.可忽略.资源加载失败会有红⾊⽇ 志：" + bundlePath);
+// #endif
+//         }
+
+//         return bundle;
+//     }
 }

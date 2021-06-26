@@ -14,6 +14,18 @@ using LuaInterface;
 using UnityEngine;
 
 public class LuaLoader : LuaFileUtils {
+    // ///<summary>
+    // // 添加打⼊Lua代码的AssetBundle
+    // ///</summary>
+    // ///<paramname="bundle"></param>
+    // public void AddBundle (string bundleName) {
+    //     AssetBundle bundle = AssetManager.Instance.LoadAssetBundle (bundleName.ToLower ());
+    //     if (bundle) {
+    //         bundleName = bundleName.Replace ("asset_0_", "").ToLower ();
+    //         base.AddSearchBundle (bundleName, bundle);
+    //     }
+    // }
+
     /// <summary>
     /// 
     /// </summary>
