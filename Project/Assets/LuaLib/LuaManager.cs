@@ -1,5 +1,5 @@
 ﻿/****************************************************************
- * File			: Assets\LuaLib\LuaEngine.cs
+ * File			: Assets\LuaLib\LuaManager.cs
  * Author		: www.loywong.com
  * COPYRIGHT	: (C)
  * Date			: 2020/06/28
@@ -11,7 +11,7 @@
 using LuaInterface;
 using UnityEngine;
 
-public class LuaEngine : ManagerVIBase<LuaEngine> {
+public class LuaManager : ManagerVIBase<LuaManager> {
     private LuaState lua = null;
     private LuaLoader loader = null;
     // ???

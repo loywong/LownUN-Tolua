@@ -109,7 +109,7 @@ public class Entry : MonoBehaviour {
 
     private void Init_Module(){
         // AppFacade.Instance.OnInit();
-        LuaEngine.Instance.OnInit();
+        LuaManager.Instance.OnInit();
 
         NetManager.Instance.OnInit();
         InputManager.Instance.OnInit();
@@ -118,9 +118,9 @@ public class Entry : MonoBehaviour {
 
     // 不管哪种流程，此函数只执行一次
     private void StartIngame () {
-        LuaEngine.Instance.OnStart ();
-        LuaEngine.Instance.OnStart ("entry.lua");
-        LuaEngine.Instance.CallFunction ("entry.OnStart");
+        LuaManager.Instance.OnStart ();
+        LuaManager.Instance.OnStart ("entry.lua");
+        LuaManager.Instance.CallFunction ("entry.OnStart");
 
         // hasLuaStarted = true;
     }
@@ -139,7 +139,7 @@ public class Entry : MonoBehaviour {
     void Update () {
         // if (Input.GetKeyDown (KeyCode.G)) {
         //     if (hasLuaStarted)
-        //         LuaEngine.Instance.CallFunction ("gamemanager.KeyCode_G");
+        //         LuaManager.Instance.CallFunction ("gamemanager.KeyCode_G");
         // }
     }
 #endif

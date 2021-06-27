@@ -50,7 +50,7 @@ public class GameController {
         //2，加载场景
         SceneLoading.Instance.OnStart (sceneId, () => {
             //3，Lua的部分
-            LuaEngine.Instance.StartScene (sceneId.ToString ());
+            LuaManager.Instance.StartScene (sceneId.ToString ());
 
             //??? 这步不需要!!! 加载场景 Model (如果场景上什么都不放) 但那是Cocos，Unity不存在这种情况
 
@@ -60,7 +60,7 @@ public class GameController {
                     Debug.LogError ("场景默认UI加载失败" + sceneId.ToString ());
                     // // 清理已经加载的部分
                     // // 比如
-                    // LuaEngine.Instance.EndScene (sceneId.ToString ());
+                    // LuaManager.Instance.EndScene (sceneId.ToString ());
                     // return;
                 }
 
@@ -78,7 +78,7 @@ public class GameController {
         Debug.Log ("GameController StartScene(): " + sceneId.ToString ());
         curSceneId = sceneId;
 
-        LuaEngine.Instance.CallFunction (curSceneName + "Controller.OnStart");
+        LuaManager.Instance.CallFunction (curSceneName + "Controller.OnStart");
 
         //初始下下一个场景的对象
         // 1 音乐播放
@@ -92,10 +92,10 @@ public class GameController {
     private void EndScene () {
         Debug.Log ("GameController EndScene: " + curSceneName);
 
-        LuaEngine.Instance.CallFunction (curSceneName + "Controller.OnEnd");
+        LuaManager.Instance.CallFunction (curSceneName + "Controller.OnEnd");
 
         //1，清理 Lua的部分
-        LuaEngine.Instance.EndScene (curSceneName);
+        LuaManager.Instance.EndScene (curSceneName);
         //2，清理 资源
         Resources.UnloadUnusedAssets ();
         //3，清理 C#内存
