@@ -9,5 +9,5 @@
 ----------------------------------------------------------------
 
 unrequire("Lobby/lobbycontroller")
-unrequire("Lobby/VI/M_LobbyView")
-unrequire("Lobby/VI/UI_LobbyView")
+unrequire("Lobby/VI/M_Lobby_View")
+unrequire("Lobby/VI/UI_Lobby_View")

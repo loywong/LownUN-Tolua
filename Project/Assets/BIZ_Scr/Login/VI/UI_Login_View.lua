@@ -1,5 +1,5 @@
 ----------------------------------------------------------------
--- File			: Assets\BIZ_Scr\Login\VI\UI_LoginView.lua
+-- File			: Assets\BIZ_Scr\Login\VI\UI_Login_View.lua
 -- Author		: www.loywong.com
 -- COPYRIGHT	: (C)
 -- Date			: 2019/09/10
@@ -8,8 +8,8 @@
 -- Maintain		: [date] desc
 ----------------------------------------------------------------
 
-UI_LoginView = {}
-local this = UI_LoginView
+UI_Login_View = {}
+local this = UI_Login_View
 
 function this.Awake(transform)
     print("AwakeAwakeAwakeAwake")

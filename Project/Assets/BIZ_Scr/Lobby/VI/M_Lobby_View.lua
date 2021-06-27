@@ -1,5 +1,5 @@
 ----------------------------------------------------------------
--- File			: Assets\BIZ_Scr\Lobby\VI\M_LobbyView.lua
+-- File			: Assets\BIZ_Scr\Lobby\VI\M_Lobby_View.lua
 -- Author		: www.loywong.com
 -- COPYRIGHT	: (C)
 -- Date			: 2019/09/10
@@ -8,8 +8,8 @@
 -- Maintain		: [date] desc
 ----------------------------------------------------------------
 
-M_LobbyView = {}
-local this = M_LobbyView
+M_Lobby_View = {}
+local this = M_Lobby_View
 
 function this.Awake(transform)
     print("@@@ LobbyView Awake()")

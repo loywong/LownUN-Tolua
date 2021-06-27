@@ -1,5 +1,5 @@
 ----------------------------------------------------------------
--- File			: Assets\BIZ_Scr\Lobby\VI\UI_LobbyView.lua
+-- File			: Assets\BIZ_Scr\Lobby\VI\UI_Lobby_View.lua
 -- Author		: www.loywong.com
 -- COPYRIGHT	: (C)
 -- Date			: 2019/09/10
@@ -8,8 +8,8 @@
 -- Maintain		: [date] desc
 ----------------------------------------------------------------
 
-UI_LobbyView = {}
-local this = UI_LobbyView
+UI_Lobby_View = {}
+local this = UI_Lobby_View
 
 function this.Awake(transform)
     print("AwakeAwakeAwakeAwake")

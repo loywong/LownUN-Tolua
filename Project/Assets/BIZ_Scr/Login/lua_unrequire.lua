@@ -9,6 +9,6 @@
 ----------------------------------------------------------------
 
 unrequire("Login/logincontroller")
-unrequire("Login/VI/M_LoginView")
-unrequire("Login/VI/UI_LoginView")
-unrequire("Login/VI/UI_LoginRegView")
+unrequire("Login/VI/M_Login_View")
+unrequire("Login/VI/UI_Login_View")
+unrequire("Login/VI/UI_LoginReg_View")

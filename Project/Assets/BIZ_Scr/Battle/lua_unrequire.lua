@@ -9,5 +9,5 @@
 ----------------------------------------------------------------
 
 unrequire("Battle/battlecontroller")
-unrequire("Battle/VI/M_BattleView")
-unrequire("Battle/VI/UI_BattleView")
+unrequire("Battle/VI/M_Battle_View")
+unrequire("Battle/VI/UI_Battle_View")

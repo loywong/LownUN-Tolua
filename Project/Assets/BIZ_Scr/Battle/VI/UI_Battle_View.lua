@@ -1,5 +1,5 @@
 ----------------------------------------------------------------
--- File			: Assets\BIZ_Scr\Battle\VI\UI_BattleView.lua
+-- File			: Assets\BIZ_Scr\Battle\VI\UI_Battle_View.lua
 -- Author		: www.loywong.com
 -- COPYRIGHT	: (C)
 -- Date			: 2019/09/10
@@ -8,8 +8,8 @@
 -- Maintain		: [date] desc
 ----------------------------------------------------------------
 
-UI_BattleView = {}
-local this = UI_BattleView
+UI_Battle_View = {}
+local this = UI_Battle_View
 
 function this.Awake(transform)
     print("AwakeAwakeAwakeAwake BattleUIView")

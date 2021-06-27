@@ -9,5 +9,5 @@
 ----------------------------------------------------------------
 
 require("Battle/battlecontroller")
-require("Battle/VI/M_BattleView")
-require("Battle/VI/UI_BattleView")
+require("Battle/VI/M_Battle_View")
+require("Battle/VI/UI_Battle_View")

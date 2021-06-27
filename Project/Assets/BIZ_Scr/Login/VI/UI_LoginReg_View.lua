@@ -1,5 +1,5 @@
 ----------------------------------------------------------------
--- File			: Assets\BIZ_Scr\Login\VI\UI_LoginRegView.lua
+-- File			: Assets\BIZ_Scr\Login\VI\UI_LoginReg_View.lua
 -- Author		: www.loywong.com
 -- COPYRIGHT	: (C)
 -- Date			: 2019/09/10
@@ -8,8 +8,8 @@
 -- Maintain		: [date] desc
 ----------------------------------------------------------------
 
-UI_LoginRegView = {}
-local this = UI_LoginRegView
+UI_LoginReg_View = {}
+local this = UI_LoginReg_View
 
 
 

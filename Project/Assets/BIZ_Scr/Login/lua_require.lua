@@ -9,6 +9,6 @@
 ----------------------------------------------------------------
 
 require("Login/logincontroller")
-require("Login/VI/M_LoginView")
-require("Login/VI/UI_LoginView")
-require("Login/VI/UI_LoginRegView")
+require("Login/VI/M_Login_View")
+require("Login/VI/UI_Login_View")
+require("Login/VI/UI_LoginReg_View")

@@ -9,5 +9,5 @@
 ----------------------------------------------------------------
 
 require("Lobby/lobbycontroller")
-require("Lobby/VI/M_LobbyView")
-require("Lobby/VI/UI_LobbyView")
+require("Lobby/VI/M_Lobby_View")
+require("Lobby/VI/UI_Lobby_View")
