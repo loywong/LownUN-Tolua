@@ -1,5 +1,5 @@
 ﻿/****************************************************************
- * File			: Assets\CORE\Util\ManagerBase.cs
+ * File			: Assets\CORE\Util\Manager.cs
  * Author		: www.loywong.com
  * COPYRIGHT	: (C)
  * Date			: 2020/04/19
