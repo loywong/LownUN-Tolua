@@ -1,7 +1,6 @@
 ----------------------------------------------------------------
--- File			: Assets\BIZ_Scr\Core\DefineOnCS.lua
+-- File			: Assets\BIZ_Scr\Core\define.lua
 -- Author		: www.loywong.com
--- Company		: ShangHai ShiWan Co.,Ltd
 -- COPYRIGHT	: (C)
 -- Date			: 2019/08/17
 -- Description	: （编辑器）针对编辑器代码提示的Lua全局变量定义，提升Lua编程效率
@@ -46,16 +45,11 @@ csgamesetting = GameSetting
 
 -- 资源管理
 assetMgr = AssetManager.Instance
-
--- -- UI界面使用uimanager
-
 netMgr = NetManager.Instance
+
 cstool = Util
 -- cslog = Log
-
--- 游戏场景控制器
--- gamecontroller = GameController
-
+-- csgamecontroller = GameController.Instance
 
 -- 业务级 ------------------------------------------------------ 全小写
 sdkmanager = SDKManager.Instance

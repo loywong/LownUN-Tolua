@@ -1,5 +1,15 @@
-LoginController = {}
-local this = LoginController
+----------------------------------------------------------------
+-- File			: Assets\BIZ_Scr\Login\logincontroller.lua
+-- Author		: www.loywong.com
+-- COPYRIGHT	: (C)
+-- Date			: 2019/07/29
+-- Description	: 登录场景控制器
+-- Version		: 1.0
+-- Maintain		: [date] desc
+----------------------------------------------------------------
+
+logincontroller = {}
+local this = logincontroller
 -- local view
 -- local uiview
 
@@ -11,7 +21,7 @@ this.sceneName = "Login"
 this.sceneUIName = "UILogin"
 
 function this.OnStart()
-    print("@@@ LoginController OnStart()")
+    print("@@@ logincontroller OnStart()")
 
     -- 1 加载场景
     -- -- 显示进度条
@@ -43,7 +53,7 @@ end
 -- end
 
 function this.OnEnd()
-    print("@@@ LoginController OnEnd()")
+    print("@@@ logincontroller OnEnd()")
 end
 
 function this.TestUI()
@@ -55,7 +65,7 @@ end
 -- 进入大厅场景
 function this.ClickEnterLobby()
     -- print(GameController.Instance.curSceneName);
-    print("[" .. GameController.Instance.curSceneName .. "]" .. "@@@ LoginController ClickEnterLobby()")
+    print("[" .. GameController.Instance.curSceneName .. "]" .. "@@@ logincontroller ClickEnterLobby()")
 
     GameController.Instance:GoScene(Enum_Scene.Lobby)
 end

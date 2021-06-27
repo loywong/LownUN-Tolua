@@ -1,9 +1,9 @@
 ----------------------------------------------------------------
--- File			: Assets\BIZ_Scr\Core\lualog.lua
+-- File			: Assets\BIZ_Scr\Core\log.lua
 -- Author		: www.loywong.com
 -- COPYRIGHT	: (C)
 -- Date			: 2019/09/10
--- Description	: 所有的lualog标签,  除了 Warn 和 Error
+-- Description	: 所有的log标签,  除了 Warn 和 Error
                 -- 注册的时候⾼要⼿动加上前缀 -lua,
                 -- 使⽤的时候直接写后缀作为tag
                 -- PS：打印Lua print(debug.traceback())
@@ -11,8 +11,8 @@
 -- Maintain		: //[date] desc
 ----------------------------------------------------------------
 
-lualog = {}
-local this = lualog
+log = {}
+local this = log
 
 --⼿动设置,不要提交
 this.isDefaultStack = false

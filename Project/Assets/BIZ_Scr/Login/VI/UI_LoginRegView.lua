@@ -1,3 +1,13 @@
+----------------------------------------------------------------
+-- File			: Assets\BIZ_Scr\Login\VI\UI_LoginRegView.lua
+-- Author		: www.loywong.com
+-- COPYRIGHT	: (C)
+-- Date			: 2019/09/10
+-- Description	: desc
+-- Version		: 1.0
+-- Maintain		: [date] desc
+----------------------------------------------------------------
+
 UI_LoginRegView = {}
 local this = UI_LoginRegView
 
@@ -27,5 +37,5 @@ function this.Awake(transform)
     print(this.btn_enterLobby.gameObject)
 
     -- 注册事件
-    inputmanager.SetClickCallback(this.btn_enterLobby.gameObject, LoginController.ClickEnterLobby)
+    inputmanager.SetClickCallback(this.btn_enterLobby.gameObject, logincontroller.ClickEnterLobby)
 end

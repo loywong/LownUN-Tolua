@@ -1,5 +1,5 @@
 ----------------------------------------------------------------
--- File			: Assets\BIZ_Scr\DT\protocal_def.lua
+-- File			: Assets\BIZ_Scr\DT\protocal_msg.lua
 -- Author		: www.loywong.com
 -- COPYRIGHT	: (C)
 -- Date			: 2019/09/12

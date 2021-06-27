@@ -1,5 +1,5 @@
 ----------------------------------------------------------------
--- File			:Assets\BIZ_Scr\gamecontroller.lua
+-- File			: Assets\BIZ_Scr\gamecontroller.lua
 -- Author		: www.loywong.com
 -- COPYRIGHT	: (C)
 -- Date			: 2019/08/24

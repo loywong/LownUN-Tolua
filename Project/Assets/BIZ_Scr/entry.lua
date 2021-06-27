@@ -2,7 +2,7 @@
 -- File			: Assets\BIZ_Scr\entry.lua
 -- Author		: www.loywong.com
 -- COPYRIGHT	: (C)
--- Date			: 2019/09/10
+-- Date			: 2019/07/29
 -- Description	: Lua逻辑的入口
 -- Version		: 1.0
 -- Maintain		: //[date] desc
@@ -47,7 +47,7 @@ function this.OnStart()
     -- CORE框架----------------------------------------
     -- 1 定义
     -- 2 设置
-    dofile("Lua_Require")
+    dofile("lua_require")
 
     -- gamecontroller.Init()
     -- net_socket.OnInit()
@@ -56,6 +56,6 @@ function this.OnStart()
     --     fn_debug.OnStart()
     -- end
 
-    Fn_Login.OnStart()
-    -- ConfigData.OnInit(Fn_Login.OnStart)
+    fn_login.OnStart()
+    -- ConfigData.OnInit(fn_login.OnStart)
 end

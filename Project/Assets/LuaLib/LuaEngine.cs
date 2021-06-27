@@ -139,7 +139,7 @@ public class LuaEngine : ManagerVIBase<LuaEngine> {
             return;
         }
 
-        string filepath = sceneName + "/Lua_Require.lua";
+        string filepath = sceneName + "/lua_require.lua";
         lua.DoFile (filepath);
     }
     public void EndScene (string sceneName) {
@@ -148,7 +148,7 @@ public class LuaEngine : ManagerVIBase<LuaEngine> {
             return;
         }
 
-        string filepath = sceneName + "/Lua_Unrequire.lua";
+        string filepath = sceneName + "/lua_unrequire.lua";
         lua.DoFile (filepath);
         LuaGC ();
     }

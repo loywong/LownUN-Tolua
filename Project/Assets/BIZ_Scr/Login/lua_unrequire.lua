@@ -1,16 +1,14 @@
 ----------------------------------------------------------------
--- File			: Assets\BIZ_Scr\Login\VI\M_LoginView.lua
+-- File			: Assets\BIZ_Scr\Login\lua_unrequire.lua
 -- Author		: www.loywong.com
 -- COPYRIGHT	: (C)
--- Date			: 2019/09/10
+-- Date			: 2019/07/29
 -- Description	: desc
 -- Version		: 1.0
 -- Maintain		: [date] desc
 ----------------------------------------------------------------
 
-M_LoginView = {}
-local this = M_LoginView
-
-function this.Awake(transform)
-    print("@@@ LoginView Awake()")
-end
+unrequire("Login/logincontroller")
+unrequire("Login/VI/M_LoginView")
+unrequire("Login/VI/UI_LoginView")
+unrequire("Login/VI/UI_LoginRegView")

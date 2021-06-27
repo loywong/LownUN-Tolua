@@ -1,16 +1,13 @@
 ----------------------------------------------------------------
--- File			: Assets\BIZ_Scr\Login\VI\M_LoginView.lua
+-- File			: Assets\BIZ_Scr\Battle\lua_require.lua
 -- Author		: www.loywong.com
 -- COPYRIGHT	: (C)
--- Date			: 2019/09/10
+-- Date			: 2019/09/09
 -- Description	: desc
 -- Version		: 1.0
 -- Maintain		: [date] desc
 ----------------------------------------------------------------
 
-M_LoginView = {}
-local this = M_LoginView
-
-function this.Awake(transform)
-    print("@@@ LoginView Awake()")
-end
+require("Battle/battlecontroller")
+require("Battle/VI/M_BattleView")
+require("Battle/VI/UI_BattleView")

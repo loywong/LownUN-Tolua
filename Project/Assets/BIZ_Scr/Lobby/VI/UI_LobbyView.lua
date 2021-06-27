@@ -1,3 +1,13 @@
+----------------------------------------------------------------
+-- File			: Assets\BIZ_Scr\Lobby\VI\UI_LobbyView.lua
+-- Author		: www.loywong.com
+-- COPYRIGHT	: (C)
+-- Date			: 2019/09/10
+-- Description	: desc
+-- Version		: 1.0
+-- Maintain		: [date] desc
+----------------------------------------------------------------
+
 UI_LobbyView = {}
 local this = UI_LobbyView
 
@@ -22,5 +32,5 @@ function this.Awake(transform)
 end
 
 function this.OnClickEntryBattle()
-    LobbyController.ClickEnterBattle()
+    lobbycontroller.ClickEnterBattle()
 end

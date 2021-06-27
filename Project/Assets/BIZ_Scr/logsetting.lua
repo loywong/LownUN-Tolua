@@ -1,7 +1,6 @@
 ----------------------------------------------------------------
--- File			: Assets\BIZ_Scr\LogSetting.lua
+-- File			: Assets\BIZ_Scr\logsetting.lua
 -- Author		: www.loywong.com
--- Company		: ShangHai ShiWan Co.,Ltd
 -- COPYRIGHT	: (C)
 -- Date			: 2019/08/20
 -- Description	:
@@ -27,7 +26,7 @@
 ----------------------------------------------------------------
 
 if not IsEditor() then
-    lualog.isDefaultStack = false
+    log.isDefaultStack = false
 end
 
 -- 控制c#层的Log⼀但完全由Lua实现，则C#层只有框架⽬志//////////////////////////////

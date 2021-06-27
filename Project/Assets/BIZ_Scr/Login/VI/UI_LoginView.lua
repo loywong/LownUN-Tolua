@@ -1,3 +1,13 @@
+----------------------------------------------------------------
+-- File			: Assets\BIZ_Scr\Login\VI\UI_LoginView.lua
+-- Author		: www.loywong.com
+-- COPYRIGHT	: (C)
+-- Date			: 2019/09/10
+-- Description	: desc
+-- Version		: 1.0
+-- Maintain		: [date] desc
+----------------------------------------------------------------
+
 UI_LoginView = {}
 local this = UI_LoginView
 
@@ -35,9 +45,9 @@ function this.Start(transform)
     -- )
 
     -- TEST 测试proto数据包
-    Fn_Account.TestProtobuf()
+    fn_account.TestProtobuf()
 end
 
 function this.OnClickEntryLobby()
-    LoginController.ClickEnterLobby()
+    logincontroller.ClickEnterLobby()
 end

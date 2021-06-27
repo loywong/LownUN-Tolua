@@ -1,3 +1,13 @@
+----------------------------------------------------------------
+-- File			: Assets\BIZ_Scr\Battle\VI\UI_BattleView.lua
+-- Author		: www.loywong.com
+-- COPYRIGHT	: (C)
+-- Date			: 2019/09/10
+-- Description	: desc
+-- Version		: 1.0
+-- Maintain		: [date] desc
+----------------------------------------------------------------
+
 UI_BattleView = {}
 local this = UI_BattleView
 
@@ -19,5 +29,5 @@ function this.Awake(transform)
 end
 
 function this.OnClickEntryLobby()
-    BattleController.OnClickEntryLobby()
+    battlecontroller.OnClickEntryLobby()
 end

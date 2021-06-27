@@ -1,8 +1,8 @@
 ----------------------------------------------------------------
--- File			: Assets\BIZ_Scr\Lua_Require.lua
+-- File			: Assets\BIZ_Scr\lua_require.lua
 -- Author		: www.loywong.com
 -- COPYRIGHT	: (C)
--- Date			: 2019/09/06
+-- Date			: 2019/07/29
 -- Description	: Lua全局脚本 包含以下部分
                 -- 1. 底层框架层(Core)
                 -- 2. 业务数据层
@@ -21,5 +21,5 @@ require("Core/inputmanager")
 -- Data
 
 -- FN
-require("FN/Fn_Account")
-require("FN/Fn_Login")
+require("FN/fn_account")
+require("FN/fn_login")
