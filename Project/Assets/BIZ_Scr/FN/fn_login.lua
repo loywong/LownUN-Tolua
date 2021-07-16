@@ -12,7 +12,7 @@ fn_login = {}
 local this = fn_login
 
 function this.OnStart()
-    print("____________________________ fn_login, Start()")
+    print("____________________________ fn_login, OnStart()")
 
     -- // 判断进入哪个场景
     -- // 1 新手进入 newplayer.scene
@@ -22,10 +22,7 @@ function this.OnStart()
     -- // 重连进入 battle.scene
     -- // 正常进入 lobby.scene
 
-    -- print(UIManager.Instance)
-    -- print(GameController.Instance.curSceneName)
-    -- print(Enum_Scene.Login)
-    GameController.Instance:GoScene (Enum_Scene.Login);
+    gamecontroller.GoScene(enum_scene.Login)
 end
 
 function this.OnStart_Relink()

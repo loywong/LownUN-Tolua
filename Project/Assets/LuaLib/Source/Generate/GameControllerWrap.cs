@@ -11,7 +11,6 @@ public class GameControllerWrap
 		L.RegFunction("New", _CreateGameController);
 		L.RegFunction("__tostring", ToLua.op_ToString);
 		L.RegVar("Instance", get_Instance, null);
-		L.RegVar("curSceneName", get_curSceneName, null);
 		L.EndClass();
 	}
 
@@ -46,7 +45,7 @@ public class GameControllerWrap
 		{
 			ToLua.CheckArgsCount(L, 2);
 			GameController obj = (GameController)ToLua.CheckObject<GameController>(L, 1);
-			Enum_Scene arg0 = (Enum_Scene)ToLua.CheckObject(L, 2, typeof(Enum_Scene));
+			int arg0 = (int)LuaDLL.luaL_checknumber(L, 2);
 			obj.GoScene(arg0);
 			return 0;
 		}
@@ -67,25 +66,6 @@ public class GameControllerWrap
 		catch (Exception e)
 		{
 			return LuaDLL.toluaL_exception(L, e);
-		}
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int get_curSceneName(IntPtr L)
-	{
-		object o = null;
-
-		try
-		{
-			o = ToLua.ToObject(L, 1);
-			GameController obj = (GameController)o;
-			string ret = obj.curSceneName;
-			LuaDLL.lua_pushstring(L, ret);
-			return 1;
-		}
-		catch(Exception e)
-		{
-			return LuaDLL.toluaL_exception(L, e, o, "attempt to index curSceneName on a nil value");
 		}
 	}
 }

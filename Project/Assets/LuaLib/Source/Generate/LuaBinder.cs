@@ -12,7 +12,6 @@ public static class LuaBinder
 		LuaInterface_DebuggerWrap.Register(L);
 		LuaProfilerWrap.Register(L);
 		EventTriggerListenerWrap.Register(L);
-		Enum_SceneWrap.Register(L);
 		GameControllerWrap.Register(L);
 		AssetManagerWrap.Register(L);
 		UIManagerWrap.Register(L);

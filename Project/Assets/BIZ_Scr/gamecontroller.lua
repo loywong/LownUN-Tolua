@@ -12,7 +12,6 @@
 -- Maintain		: //[2021/05] == Old /Core/GameManager.lua
 ----------------------------------------------------------------
 
-
 gamecontroller = {}
 local this = gamecontroller
 
@@ -49,4 +48,10 @@ end
 
 function this.IsIngame()
     return this.IsLobby() or this.IsBattle()
+end
+
+
+
+function this.GoScene(sceneid)
+    GameController.Instance:GoScene(sceneid)
 end

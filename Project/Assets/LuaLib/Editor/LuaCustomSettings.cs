@@ -159,7 +159,7 @@ public static class CustomSettings {
         _GT (typeof (EventTriggerListener)),
 
         // 流程 Flow
-        _GT (typeof (Enum_Scene)),
+        // _GT (typeof (Enum_Scene)),
         _GT (typeof (GameController)),
 
         // 模块 Module

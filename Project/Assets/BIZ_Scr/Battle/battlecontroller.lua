@@ -20,8 +20,7 @@ end
 -- 玩家输入部分//////////////////////////////////////////////////////////////////
 -- 进入大厅场景
 function this.OnClickEntryLobby()
-    -- print(GameController.Instance.curSceneName);
-    print("[".. GameController.Instance.curSceneName .. "]" .. "@@@ battlecontroller ClickEnterLobby()")
+    print("[Battle] @@@ battlecontroller ClickEnterLobby()")
     
-    GameController.Instance:GoScene(Enum_Scene.Lobby)
+    gamecontroller.GoScene(enum_scene.Lobby)
 end

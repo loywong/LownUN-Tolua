@@ -37,11 +37,6 @@ public class UILoading : MonoBehaviour {
             sliderProgress.value = 0;
             sliderProgress.gameObject.SetActive (true);
         }
-
-        if (txtmeshTip != null) {
-            txtmeshTip.gameObject.SetActive (true);
-            txtmeshTip.text = "当前加载场景：" + GameController.Instance.curSceneName;
-        }
     }
 
     public void OnReset () {

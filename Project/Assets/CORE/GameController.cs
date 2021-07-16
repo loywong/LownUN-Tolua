@@ -14,6 +14,7 @@
 
 using UnityEngine;
 
+// 必须和.unity场景文件名称严格匹配
 public enum Enum_Scene {
     None = 0,
     Splash = 1, //自定义的片头展示
@@ -33,39 +34,38 @@ public class GameController {
         }
     }
 
+    private int curSceneId = (int) Enum_Scene.None;
     // private string preSceneName = "";
-    public string curSceneName {
-        get { return curSceneId.ToString (); }
-    }
-
-    private Enum_Scene curSceneId = Enum_Scene.None;
+    private string curSceneName { get { return ((Enum_Scene) curSceneId).ToString (); } }
 
     // 一定是通过Lua层来调用
-    public void GoScene (Enum_Scene sceneId /**, System.Action cbComplete = null */ ) {
+    public void GoScene (int sid /**, System.Action cbComplete = null */ ) {
+        var sceneName = ((Enum_Scene) sid).ToString ();
+
         //0，如果当前处于有效场景（不是第一个场景）
-        if (curSceneId > Enum_Scene.None)
+        if (curSceneId > (int) Enum_Scene.None)
             EndScene ();
 
         //1, 预加载资源（和CocosCreator不同，Unity会自动收集所有相关的依赖资源，并提供加载进度，不需要自己手动指定加载的资源（文件夹））
         //2，加载场景
-        SceneLoading.Instance.OnStart (sceneId, () => {
+        SceneLoading.Instance.OnStart (sid, () => {
             //3，Lua的部分
-            LuaManager.Instance.StartScene (sceneId.ToString ());
+            LuaManager.Instance.StartScene (sceneName);
 
             //??? 这步不需要!!! 加载场景 Model (如果场景上什么都不放) 但那是Cocos，Unity不存在这种情况
 
             //4，加载默认界面 Panel
-            UIManager.Instance.LoadSceneBase (sceneId.ToString (), (GameObject go) => {
+            UIManager.Instance.LoadSceneBase (sceneName, (GameObject go) => {
                 if (go == null) {
-                    Debug.LogError ("场景默认UI加载失败" + sceneId.ToString ());
+                    Debug.LogError ("场景默认UI加载失败" + sceneName);
                     // // 清理已经加载的部分
                     // // 比如
-                    // LuaManager.Instance.EndScene (sceneId.ToString ());
+                    // LuaManager.Instance.EndScene (sceneName);
                     // return;
                 }
 
-                Debug.Log ("场景加载完成" + sceneId.ToString ());
-                StartScene (sceneId);
+                Debug.Log ("场景加载完成" + sceneName);
+                StartScene (sid);
 
                 //??? 完成回调通知
                 // if (cbComplete != null)
@@ -74,8 +74,8 @@ public class GameController {
         });
     }
 
-    private void StartScene (Enum_Scene sceneId) {
-        Debug.Log ("GameController StartScene(): " + sceneId.ToString ());
+    private void StartScene (int sceneId) {
+        Debug.Log ("GameController StartScene(): " + ((Enum_Scene) sceneId).ToString ());
         curSceneId = sceneId;
 
         LuaManager.Instance.CallFunction (curSceneName + "Controller.OnStart");
@@ -84,7 +84,7 @@ public class GameController {
         // 1 音乐播放
         string bgm = "S_BGM_Lobby";
         // SoundManager.Instance.PlayBGM (bgm);
-        AudioPoolManager.Instance.PlayMusic(bgm);
+        AudioPoolManager.Instance.PlayMusic (bgm);
         // 2 Fn管理器
         // FnController.Instance.OnStart();
     }

@@ -19,7 +19,11 @@ require("Core/functions")
 require("Core/inputmanager")
 
 -- Data
+require("DT/define")
 
 -- FN
 require("FN/fn_account")
 require("FN/fn_login")
+
+-- Controller
+require("gamecontroller")

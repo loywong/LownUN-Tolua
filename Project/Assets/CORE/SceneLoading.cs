@@ -21,13 +21,13 @@ public class SceneLoading : ManagerVIBase<SceneLoading> {
     private AsyncOperation asyncOP = null;
     private System.Action cbComplete = null;
 
-    public void OnStart (Enum_Scene sceneId, System.Action cb) {
+    public void OnStart (int sceneId, System.Action cb) {
         cbComplete = cb;
 
         StartCoroutine (Load (sceneId));
     }
 
-    private IEnumerator Load (Enum_Scene sceneId) {
+    private IEnumerator Load (int sceneId) {
         // 1 加载前 BeforeStartLoad
         Log.Trace ("scene", "SceneLoading{} 111111111111");
         // 1-1 记住当前场景信息（TODO 这一步应该写在GameController上）
@@ -39,7 +39,7 @@ public class SceneLoading : ManagerVIBase<SceneLoading> {
 
         // 2 加载
         Log.Trace ("scene", "SceneLoading{} 222222222222");
-        asyncOP = SceneManager.LoadSceneAsync ((int) sceneId);
+        asyncOP = SceneManager.LoadSceneAsync (sceneId);
         yield return asyncOP;
 
         // 3 AfterStartLoad

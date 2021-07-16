@@ -12,6 +12,9 @@ public class AssetManagerWrap
 		L.RegFunction("LoadAudio", LoadAudio);
 		L.RegFunction("New", _CreateAssetManager);
 		L.RegFunction("__tostring", ToLua.op_ToString);
+		L.RegVar("luaBundleList", get_luaBundleList, set_luaBundleList);
+		L.RegVar("InAppAssetPath", get_InAppAssetPath, null);
+		L.RegVar("OutAppAssetPath", get_OutAppAssetPath, null);
 		L.EndClass();
 	}
 
@@ -95,6 +98,72 @@ public class AssetManagerWrap
 		catch (Exception e)
 		{
 			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_luaBundleList(IntPtr L)
+	{
+		object o = null;
+
+		try
+		{
+			o = ToLua.ToObject(L, 1);
+			AssetManager obj = (AssetManager)o;
+			System.Collections.Generic.List<string> ret = obj.luaBundleList;
+			ToLua.PushSealed(L, ret);
+			return 1;
+		}
+		catch(Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e, o, "attempt to index luaBundleList on a nil value");
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_InAppAssetPath(IntPtr L)
+	{
+		try
+		{
+			LuaDLL.lua_pushstring(L, AssetManager.InAppAssetPath);
+			return 1;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_OutAppAssetPath(IntPtr L)
+	{
+		try
+		{
+			LuaDLL.lua_pushstring(L, AssetManager.OutAppAssetPath);
+			return 1;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int set_luaBundleList(IntPtr L)
+	{
+		object o = null;
+
+		try
+		{
+			o = ToLua.ToObject(L, 1);
+			AssetManager obj = (AssetManager)o;
+			System.Collections.Generic.List<string> arg0 = (System.Collections.Generic.List<string>)ToLua.CheckObject(L, 2, typeof(System.Collections.Generic.List<string>));
+			obj.luaBundleList = arg0;
+			return 0;
+		}
+		catch(Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e, o, "attempt to index luaBundleList on a nil value");
 		}
 	}
 }

@@ -20,8 +20,7 @@ function this.OnEnd()
 end
 
 function this.ClickEnterBattle()
-    -- print(GameController.Instance.curSceneName);
-    print("[".. GameController.Instance.curSceneName .. "]" .. "@@@ lobbycontroller ClickEnterBattle()")
+    print("[Lobby] @@@ lobbycontroller ClickEnterBattle()")
     
-    GameController.Instance:GoScene(Enum_Scene.Battle)
+    gamecontroller.GoScene(enum_scene.Battle)
 end
