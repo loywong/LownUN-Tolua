@@ -1,0 +1,18 @@
+{
+    "ServerType": 1,
+    "ChannelID": "20001",
+    "ClientType": "1",
+    "Version": "1.1.0",
+    "FacebookID": "2475421986019741",
+    "WebBaseUrl": "http:\/\/xxx.xxx.coom",
+    "AssetServerSecretkey": "oHgkb7p6KEqE9LhxAJceACytXR5XXB94",
+    "RunningMode": 1,
+    "ReadMe": "北美内⽹测试",
+    "IsMultiLocale": 0,
+    "DefaultLocaleId": 0,
+    "Locale": {
+        "EN": "English",
+        "ZH_TW": "繁体中⽂",
+        "ZH": "简体中⽂"
+    }
+}
