@@ -145,33 +145,82 @@ public class AssetManager : ManagerBase<AssetManager> {
         BundleLoader.ReadFileAsync<AudioClip> (scene, filepath, abName, cb);
     }
 
-    public T LoadAsset<T> (string abname, string assetname, int assetType = 0) where T : UnityEngine.Object {
-        return null;
+    public static string CombineABName (string abName, int assetType) {
+        return CombineAssetPartName (assetType) + "_" + abName + GameSetting.ExtName;
     }
 
-//     public AssetBundle LoadAssetBundle (string abName) {
-//         abName = abName.ToLower ();
-//         AssetBundle bundle = null;
-//         string bundlePath = OutAppAssetPath + abName;
+    public static string CombineAssetPartName (int assetType) {
+        return "asset_" + assetType.ToString ();
+    }
 
-//         if (File.Exists (bundlePath)) {
-//             if (BundleCacheDict.ContainsKey (abName))
-//                 BundleCacheDict.TryGetValue (abName, out bundle);
-//             else {
-//                 LoadDependencies (abName);
-//                 bundle = AssetBundle.LoadFromFile (bundlePath);
-//                 if (bundle)
-//                     BundleCacheDict.Add (abName, bundle);
-//                 //Debug.Log Warning("Asset Manager{} Bundle缓存数量Bundle cacheD ict.count： “+Bundle CacheD ict.Count) ;
-//             }
-//         } else {
-// #if UNITY_EDITOR
-//             Debug.Log ("(可能是Resource下的资源.否则就是该资源没有更新AB名设置) 加载bundle失败.可忽略.资源加载失败会有红⾊⽇志：" + bundlePath);
-// #else
-//             Debug.Log("加载bundle失败.可忽略.资源加载失败会有红⾊⽇ 志：" + bundlePath);
-// #endif
-//         }
+    public T LoadAsset<T> (string abName, string assetName, int assetType = 0) where T : UnityEngine.Object {
+        // Log.Gray ("asset", "LoadAsset isGameHideOrShow：" + Entry.Instance.isGameHideOrShow + " run In Background：" + Application.runInBackground);
+        Log.Gray ("asset", "LoadAsset" + assetName);
+        abName = AssetManager.CombineABName (abName, assetType).ToLower ();
 
-//         return bundle;
-//     }
+        T loadedResource = null;
+#if UNITY_EDITOR
+        //???(在正式使⽤美术规范之前.这⾥会读到同⼀路径下的同名的资源)
+        //在Editor的开发环境下这⾥⼀定会读取到资源(Resources资源除外)
+        string[] assetPaths = AssetDatabase.GetAssetPathsFromAssetBundleAndAssetName (abName, assetName);
+        foreach (var assetPathItem in assetPaths) {
+            if (loadedResource == null) {
+                loadedResource = AssetDatabase.LoadAssetAtPath<T> (assetPathItem);
+            } else {
+                break;
+            }
+        }
+#endif
+
+        if (loadedResource == null) {
+            AssetBundle bundle = LoadAssetBundle (abName);
+            if (bundle && bundle.Contains (assetName))
+                loadedResource = bundle.LoadAsset<T> (assetName);
+        }
+
+        //加载不到资源尝试使⽤Resources.Load
+        if (loadedResource == null)
+            loadedResource = Resources.Load<T> (assetName);
+
+        if (loadedResource == null) {
+            if (typeof (T).Name == "Audio clip")
+                Debug.LogWarning (string.Format ("资源加载失败：{0} /{1} /{2} ", assetType, abName, assetName));
+            else {
+#if UNITY_EDITOR
+                Debug.LogError (string.Format ("资源加载失败：{0} /{1} /{2} ", assetType, abName, assetName));
+#else
+                Debug.LogWarning (string.Format ("资源加载夫败：{0} /{1} /{2} ", assetType, abName, assetName));
+#endif
+            }
+        }
+
+        return loadedResource;
+    }
+
+    // TODO
+    public AssetBundle LoadAssetBundle (string abName) {
+        abName = abName.ToLower ();
+        AssetBundle bundle = null;
+        //         string bundlePath = OutAppAssetPath + abName;
+
+        //         if (File.Exists (bundlePath)) {
+        //             if (BundleCacheDict.ContainsKey (abName))
+        //                 BundleCacheDict.TryGetValue (abName, out bundle);
+        //             else {
+        //                 LoadDependencies (abName);
+        //                 bundle = AssetBundle.LoadFromFile (bundlePath);
+        //                 if (bundle)
+        //                     BundleCacheDict.Add (abName, bundle);
+        //                 //Debug.Log Warning("AssetManager{} Bundle缓存数量Bundle cacheD ict.count： "+Bundle CacheD ict.Count) ;
+        //             }
+        //         } else {
+        // #if UNITY_EDITOR
+        //             Debug.Log ("(可能是Resource下的资源.否则就是该资源没有更新AB名设置) 加载bundle失败.可忽略.资源加载失败会有红⾊⽇志：" + bundlePath);
+        // #else
+        //             Debug.Log("加载bundle失败.可忽略.资源加载失败会有红⾊⽇ 志：" + bundlePath);
+        // #endif
+        //         }
+
+        return bundle;
+    }
 }

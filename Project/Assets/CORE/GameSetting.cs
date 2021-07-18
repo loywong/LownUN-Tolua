@@ -11,17 +11,30 @@
 using UnityEngine;
 
 public class GameSetting {
+    // 打包相关 ------------------------------------------- begin
+    // 不使用字节码模式
+    // public const bool LuaByteMode = false; //Lua字节码模式-默认关闭
+    public static string FrameworkPath{get{return Application.dataPath + "/LuaLib";}}
+    public static string FrameworkRoot{get{return Application.dataPath + "/LuaLib";}}
+    // 素材扩展名
+    public const string ExtName = ".unity3d";
+    // 打包相关 ------------------------------------------- end
+
     //------------------------------------------- begin
     // 系统环境 配置参数
     public static bool isWss = false;
-    public static string ServerType = "";
+    // 0：开发自用 1：内网测试 2：外网测试 3：模拟服 4:正式服
+    public static int ServerType = 0;
     public static string ServerID = "";
-    public static string ChanelID = "";
+    public static string ChannelID = "";
     public static string ClientType = "";
     public static string FacebookID = "";
+    public static string WebBaseUrl = "";
     public static string WebServerURL = "";
     public static Enum_RunningMode RunningMode = Enum_RunningMode.Develop;
-    public static string LocaleConfig = "";
+    // 资源服务器 secret key
+    public static string AssetServerSecretkey;
+    // public static List<LocaleLanguage> LocaleConfig = "";
     //------------------------------------------- end
 
     // 资源加载方式 1, 编辑器模式路径 2，bundle包 // PS：如果在编辑器状态需要强制改为Bundle加载，则手动修改
@@ -53,19 +66,21 @@ public class GameSetting {
         Input.multiTouchEnabled = false;
     }
 
-    public static void OnInitData (object config) {
-        // var serverConfigData = AssetManager.Instance.LoadAsset<TextAsset>("Configs","GameConfig");
-        // var jd = LitJson
-        GameSetting.ServerType = null;
-        GameSetting.ServerID = null;
-        GameSetting.ChanelID = null;
-        GameSetting.ClientType = null;
-        GameSetting.FacebookID = null;
-        GameSetting.WebServerURL = null;
-        GameSetting.RunningMode = (Enum_RunningMode) (1);
-        GameSetting.LocaleConfig = null;
+    public static void OnInitData (TextAsset serverConfigData) {
+        var jd = LitJson.JsonMapper.ToObject(serverConfigData.text);
+        GameSetting.ServerType = int.Parse(jd["ServerType"].ToString());
+        GameSetting.ChannelID = jd["ChannelID"].ToString();
+        GameSetting.ClientType = jd["ClientType"].ToString();
+        GameSetting.FacebookID = jd["FacebookID"].ToString();
+        GameSetting.WebBaseUrl = jd["WebBaseUrl"].ToString();
+        GameSetting.AssetServerSecretkey = jd["AssetServerSecretkey"].ToString();
+        GameSetting.RunningMode = (Enum_RunningMode) int.Parse(jd["RunningMode"].ToString());
 
-        // Debug.Log("Game Config: " + config.text);
+        // GameSetting.LocaleConfig = null;
+
+        Debug.LogError("Game Config: " + serverConfigData.text);
+        Debug.Log("GameSetting.RunningMode: " + GameSetting.RunningMode);
+
         // hasGameSettingsInited = true;
         Log.Green ("workflow", "<<<<<< Init Local Config End");
     }
