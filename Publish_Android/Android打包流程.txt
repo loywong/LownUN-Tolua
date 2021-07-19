@@ -1,0 +1,11 @@
+1，打开GameConfig.json
+2，编辑发布APP对应的服务器Id
+3，编辑指定版本号 Version
+4，编辑其他项
+5，执行自动化发布脚本.py 并等待执行完成
+6，发布完成自动打开APK所在文件目录
+7，发布完成自动打开资源包目录（命名为StreamingAssets，不是指Assets目录下的）
+8，打开WinScp软件，拷贝资源包中的Packagers到指定的远程服务器目录/xxx/xxx/xxx/.../10001中
+9，运行APK
+
+注意：10001为GameConfig中的APP渠道ID，即不同的APP对应不同的目录
