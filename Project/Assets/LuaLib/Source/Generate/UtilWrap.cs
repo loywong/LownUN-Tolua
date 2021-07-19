@@ -8,7 +8,7 @@ public class UtilWrap
 	{
 		L.BeginStaticLibs("Util");
 		L.RegFunction("Instantiate2", Instantiate2);
-		L.RegFunction("md5file", md5file);
+		L.RegFunction("MD5File", MD5File);
 		L.EndStaticLibs();
 	}
 
@@ -31,17 +31,39 @@ public class UtilWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int md5file(IntPtr L)
+	static int MD5File(IntPtr L)
 	{
 		try
 		{
-			ToLua.CheckArgsCount(L, 2);
-			string arg0 = ToLua.CheckString(L, 1);
-			long arg1;
-			string o = Util.md5file(arg0, out arg1);
-			LuaDLL.lua_pushstring(L, o);
-			LuaDLL.tolua_pushint64(L, arg1);
-			return 2;
+			int count = LuaDLL.lua_gettop(L);
+
+			if (count == 1 && TypeChecker.CheckTypes<string>(L, 1))
+			{
+				string arg0 = ToLua.ToString(L, 1);
+				string o = Util.MD5File(arg0);
+				LuaDLL.lua_pushstring(L, o);
+				return 1;
+			}
+			else if (count == 1 && TypeChecker.CheckTypes<byte[]>(L, 1))
+			{
+				byte[] arg0 = ToLua.CheckByteBuffer(L, 1);
+				string o = Util.MD5File(arg0);
+				LuaDLL.lua_pushstring(L, o);
+				return 1;
+			}
+			else if (count == 2)
+			{
+				string arg0 = ToLua.CheckString(L, 1);
+				long arg1;
+				string o = Util.MD5File(arg0, out arg1);
+				LuaDLL.lua_pushstring(L, o);
+				LuaDLL.tolua_pushint64(L, arg1);
+				return 2;
+			}
+			else
+			{
+				return LuaDLL.luaL_throw(L, "invalid arguments to method: Util.MD5File");
+			}
 		}
 		catch (Exception e)
 		{
