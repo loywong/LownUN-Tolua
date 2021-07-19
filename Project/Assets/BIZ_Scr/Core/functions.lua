@@ -10,7 +10,7 @@
 
 -- 程序运行在编辑器模式下，此时必然也是（内网）开发环境下
 function IsEditor()
-    return UnityApplication.IsEditor
+    return UnityApplication.isEditor
 end
 
 -- 取消Lua对象的引用，等待垃圾回收
