@@ -14,27 +14,21 @@
 log = {}
 local this = log
 
---⼿动设置,不要提交
-this.isDefaultStack = false
---⾮编辑器开发状态时不打印Lua的⽬志
-local isOpen = IsEditor()
+-- ⾮编辑器模式不打印堆栈信息
+this.isStackOpen = true
 
 function log_Stack()
-    if isOpen then
+    if this.isStackOpen then
         print(debug.traceback())
     end
 end
 
-function GetStack()
-    if isOpen then
-        return tostring(debug.traceback())
-    else
-        return ""
-    end
+local function GetStack()
+    return tostring(debug.traceback())
 end
 
 function logWarn(str)
-    if this.isDefaultStack then
+    if this.isStackOpen then
         Log.warn("lua--" .. str .. GetStack())
     else
         Log.Warn("lua--" .. str)
@@ -42,7 +36,7 @@ function logWarn(str)
 end
 
 function logError(str)
-    if this.isDefaultStack then
+    if this.isStackOpen then
         Log.Error("lua--" .. str .. GetStack())
     else
         Log.Error("lua--" .. str)
@@ -51,7 +45,7 @@ end
 
 --分标签,分颜⾊
 function log_Trace(tag, str)
-    if this.isDefaultStack then
+    if this.isStackOpen then
         Log.Trace("lua--" .. tag, str .. GetStack())
     else
         Log.Trace("lua--" .. tag, str)
@@ -59,7 +53,7 @@ function log_Trace(tag, str)
 end
 
 function log_Orange(tag, str)
-    if this.isDefaultStack then
+    if this.isStackOpen then
         Log.Orange("lua--" .. tag, str .. GetStack())
     else
         Log.Orange("lua--" .. tag, str)
@@ -67,7 +61,7 @@ function log_Orange(tag, str)
 end
 
 function log_Red(tag, str)
-    if this.isDefaultStack then
+    if this.isStackOpen then
         Log.Red("lua--" .. tag, str .. GetStack())
     else
         Log.Red("lua--" .. tag, str)
@@ -75,7 +69,7 @@ function log_Red(tag, str)
 end
 
 function log_Green(tag, str)
-    if this.isDefaultStack then
+    if this.isStackOpen then
         Log.Green("lua--" .. tag, str .. GetStack())
     else
         Log.Green("lua--" .. tag, str)
@@ -83,7 +77,7 @@ function log_Green(tag, str)
 end
 
 function log_Blue(tag, str)
-    if this.isDefaultStack then
+    if this.isStackOpen then
         Log.Blue("lua--" .. tag, str .. GetStack())
     else
         Log.Blue("lua--" .. tag, str)
@@ -91,7 +85,7 @@ function log_Blue(tag, str)
 end
 
 function log_Gray(tag, str)
-    if this.isDefaultStack then
+    if this.isStackOpen then
         Log.Gray("lua--" .. tag, str .. GetStack())
     else
         Log.Gray("lua--" .. tag, str)

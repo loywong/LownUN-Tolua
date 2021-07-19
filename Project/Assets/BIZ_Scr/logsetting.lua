@@ -25,18 +25,16 @@
 -- Maintain		: //[date] desc
 ----------------------------------------------------------------
 
+-- 控制lua层的日志是否携带堆栈信息
 if not IsEditor() then
-    log.isDefaultStack = false
+    log.isStackOpen = false
 end
 
--- 控制c#层的Log⼀但完全由Lua实现，则C#层只有框架⽬志//////////////////////////////
---------------------------------------------------------------------------------------------------------
+-- 1 CORE -----------------------------------------
+-- 1-1 功能
+-- Log.OpenTag("util") ;                    --Trace⽩⾊
 
--- // // 1 CORE -----------------------------------------
--- // // 1-1 功能
--- // Log.OpenTag("util") ;	                        //Trace⽩⾊
-
---////1-2模块
+-- 1-2模块
 Log.OpenTag("net")
 Log.OpenTag("socket")
 if IsEditor() then
@@ -48,11 +46,11 @@ Log.OpenTag("asset")
 Log.OpenTag("ui")
 
 -- 1-3 流程
-Log.OpenTag("scene")                        --//Green绿⾊
-Log.OpenTag("flow")                         --//Green绿⾊ workflow
-Log.OpenTag("login")                        --//Green绿⾊
+Log.OpenTag("scene")                        -- Green绿⾊
+Log.OpenTag("workflow")                         -- Green绿⾊
+Log.OpenTag("login")                        -- Green绿⾊
 Log.OpenTag("sdk")
 Log.OpenTag("test")
 
--- // // 3 PERS--------------------------------------
+-- 3 PERS--------------------------------------
 Log.OpenTag("loywong")
