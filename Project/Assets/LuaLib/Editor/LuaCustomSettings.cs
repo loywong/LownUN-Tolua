@@ -158,21 +158,26 @@ public static class CustomSettings {
         // 组件 自定义
         _GT (typeof (EventTriggerListener)),
 
-        // 流程 Flow
-        // _GT (typeof (Enum_Scene)),
-        _GT (typeof (GameController)),
+        // 全局设置
+        _GT (typeof (GameSetting)),
+
+        // 功能 Util
+        _GT (typeof (Util)),
+        _GT (typeof (Log)),
+        _GT (typeof (TimeWatcher)),
+        _GT (typeof (GameObjectOp)),
 
         // 模块 Module
         _GT (typeof (AssetManager)),
+        _GT (typeof (NetManager)),
         // _GT(typeof(Pool_Eff)),
         // _GT(typeof(Pool_Model)),
         // _GT (typeof (SoundManager)),
         _GT (typeof (UIManager)),
-        _GT (typeof (GameObjectOp)),
 
-        // 功能 Util
-        _GT (typeof (Log)),
-        _GT (typeof (TimeWatcher)),
+        // 控制器
+        _GT (typeof (GameController)),
+        
         /////////////////////////////////////////////////////////////////////////////////////
     };
 

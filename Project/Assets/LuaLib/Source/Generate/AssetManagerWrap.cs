@@ -10,6 +10,9 @@ public class AssetManagerWrap
 		L.RegFunction("LoadLua", LoadLua);
 		L.RegFunction("LoadPrefab", LoadPrefab);
 		L.RegFunction("LoadAudio", LoadAudio);
+		L.RegFunction("CombineABName", CombineABName);
+		L.RegFunction("CombineAssetPartName", CombineAssetPartName);
+		L.RegFunction("LoadAssetBundle", LoadAssetBundle);
 		L.RegFunction("New", _CreateAssetManager);
 		L.RegFunction("__tostring", ToLua.op_ToString);
 		L.RegVar("luaBundleList", get_luaBundleList, set_luaBundleList);
@@ -94,6 +97,59 @@ public class AssetManagerWrap
 			System.Action<UnityEngine.AudioClip> arg2 = (System.Action<UnityEngine.AudioClip>)ToLua.CheckDelegate<System.Action<UnityEngine.AudioClip>>(L, 4);
 			obj.LoadAudio(arg0, arg1, arg2);
 			return 0;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int CombineABName(IntPtr L)
+	{
+		try
+		{
+			ToLua.CheckArgsCount(L, 2);
+			string arg0 = ToLua.CheckString(L, 1);
+			int arg1 = (int)LuaDLL.luaL_checknumber(L, 2);
+			string o = AssetManager.CombineABName(arg0, arg1);
+			LuaDLL.lua_pushstring(L, o);
+			return 1;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int CombineAssetPartName(IntPtr L)
+	{
+		try
+		{
+			ToLua.CheckArgsCount(L, 1);
+			int arg0 = (int)LuaDLL.luaL_checknumber(L, 1);
+			string o = AssetManager.CombineAssetPartName(arg0);
+			LuaDLL.lua_pushstring(L, o);
+			return 1;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int LoadAssetBundle(IntPtr L)
+	{
+		try
+		{
+			ToLua.CheckArgsCount(L, 2);
+			AssetManager obj = (AssetManager)ToLua.CheckObject<AssetManager>(L, 1);
+			string arg0 = ToLua.CheckString(L, 2);
+			UnityEngine.AssetBundle o = obj.LoadAssetBundle(arg0);
+			ToLua.Push(L, o);
+			return 1;
 		}
 		catch (Exception e)
 		{
