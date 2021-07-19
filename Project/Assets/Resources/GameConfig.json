@@ -1,9 +1,9 @@
 {
     "ServerType": 1,
-    "ChannelID": "20001",
-    "ClientType": "1",
+    "ChannelID": 20001,
+    "ClientType": 1,
     "Version": "1.1.0",
-    "FacebookID": "2475421986019741",
+    "FacebookID": "2475113086019741",
     "WebBaseUrl": "http:\/\/xxx.xxx.coom",
     "AssetServerSecretkey": "oHgkb7p6KEqE9LhxAJceACytXR5XXB94",
     "RunningMode": 1,

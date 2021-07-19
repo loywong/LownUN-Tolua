@@ -63,57 +63,55 @@ public class Entry : MonoBehaviour {
     /// <param name="isHotUpdate">正常流程时 False，热更之后重新初始化的流程 True</param>
     void Start () {
         // 0 Env
-        Log.Green ("workflow", ">>>>>> Init Local Config");
-        GameSetting.OnInitEngine();
+        Debug.Log (">>>>>> Init Local Config");
+        GameSetting.OnInitEngine ();
 
         // 启动游戏一定会经过一轮初始化
-        Init_Module();
-        // HACK
-        Test ();
-        
+        Init_Module ();
+
         // 1 config
-        GameSetting.OnInitData(AssetManager.Instance.LoadAsset<TextAsset>("Configs","GameConfig"));
+        GameSetting.OnInitData (AssetManager.Instance.LoadAsset<TextAsset> ("Configs", "GameConfig"));
         // LocaleManager.Instance.OnInit();
-        GameSetting.OnInitLog();
+        GameSetting.OnInitDebug ();
 
+#if UNITY_EDITOR
+        Debug.Log ("Entry{} Start() EDIT Mode isHotUpdate == false");
+#else
+        // TODO 可能发布非热更模式包用于临时测试
+        isHotUpdate = true;
+#endif
 
-        #if UNITY_EDITOR
-            Debug.Log ("Entry{} OnStart() with isHotUpdate: " + isHotUpdate);
-        #else
-            isHotUpdate = true;
-        #endif
-
-        if(isHotUpdate) {
+        if (isHotUpdate) {
             AssetUpdate.Instance.OnStart (
                 (progress) => {
                     // 更新进度中。。。
                 },
-                (hasValidUpdate) => { 
-                    if(hasValidUpdate){
-                        Log.Green ("workflow", ">>>>>> Init Local Config Start");
+                (hasValidUpdate) => {
+                    if (hasValidUpdate) {
+                        Debug.Log (">>>>>> Init Local Config Start");
                         // 热更之后，再一次初始化游戏设置配置信息！！！
-                        GameSetting.OnInitData(AssetManager.Instance.LoadAsset<TextAsset>("Configs","GameConfig"));
+                        GameSetting.OnInitData (AssetManager.Instance.LoadAsset<TextAsset> ("Configs", "GameConfig"));
                         // LocaleManager.Instance.OnInit();
-                        GameSetting.OnInitLog();
+                        GameSetting.OnInitDebug ();
                     }
 
-                    Log.Green ("workflow", "Entry{} StartIngame() when hotupdate is over!");
-                    StartIngame();
+                    Debug.Log ("Entry{} StartIngame() when hotupdate is over!");
+                    StartIngame ();
                 }
             );
         } else {
-            Log.Error ("workflow", "Entry{} StartIngame() when hotupdate disabled!");
-            StartIngame();
+            Debug.Log ("Entry{} hotupdate disabled!");
+            StartIngame ();
         }
     }
 
-    private void Init_Module(){
+    private void Init_Module () {
         // AppFacade.Instance.OnInit();
-        LuaManager.Instance.OnInit();
+        LuaManager.Instance.OnInit ();
 
-        NetManager.Instance.OnInit();
-        InputManager.Instance.OnInit();
-        AssetUpdate.Instance.OnInit();
+        NetManager.Instance.OnInit ();
+        InputManager.Instance.OnInit ();
+        AssetUpdate.Instance.OnInit ();
     }
 
     // 不管哪种流程，此函数只执行一次
@@ -125,21 +123,12 @@ public class Entry : MonoBehaviour {
         // hasLuaStarted = true;
     }
 
-    private void Test () {
-        // // Test1 直接执行一个脚本
-        // gameObject.AddComponent<LuaBehaviourTest> ();
-
-        // // Test2 加载一个Prefab
-        // UIManager.Instance.LoadPanel ("Login", "UILogin", null, null, panel => {
-        //     Debug.Log ("加载 Login面板结束");
-        // });
-    }
-
 #if UNITY_EDITOR
     void Update () {
+        // TEST
         // if (Input.GetKeyDown (KeyCode.G)) {
         //     if (hasLuaStarted)
-        //         LuaManager.Instance.CallFunction ("gamemanager.KeyCode_G");
+        //         LuaManager.Instance.CallFunction ("gamecontroller.KeyCode_G");
         // }
     }
 #endif
@@ -152,6 +141,6 @@ public class Entry : MonoBehaviour {
     }
 
     void OnApplicationQuit () {
-        Log.Green ("workflow", "@@@@@@@@@@@ Quit Game @@@@@@@@@@@@@");
+        Debug.Log ("@@@@@@@@@@@ Quit Game @@@@@@@@@@@@@");
     }
 }

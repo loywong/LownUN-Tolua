@@ -12,8 +12,12 @@
 ----------------------------------------------------------------
 
 -- Core - Util
+require("Core/define")
 require("Core/extensions")
 require("Core/functions")
+
+require("Core/log")
+require("logsetting")
 
 -- Core - Module
 require("Core/inputmanager")
