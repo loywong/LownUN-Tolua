@@ -20,17 +20,15 @@ Animator = UnityEngine.Animator
 Random = UnityEngine.Random
 UnityApplication = UnityEngine.Application
 
-DoTween = DG.Tweening.DOTween
-DoTweenExt = DoTweenExtensions
-DOVirtual = DG.Tweening.DOVirtual
+-- DoTween = DG.Tweening.DOTween
+-- DoTweenExt = DoTweenExtensions
+-- DOVirtual = DG.Tweening.DOVirtual
 
 PlayerPrefs = UnityEngine.PlayerPrefs
 
 -- /////////////////////////////////////
 -- 一些特殊功能
--- add by changhao
-List_String = System.Collections.Generic.List_String
--- add by chenbojun
+-- List_String = System.Collections.Generic.List_String
 Shader = UnityEngine.Shader
 Image = UnityEngine.UI.Image
 Material = UnityEngine.Material
@@ -38,18 +36,16 @@ Input = UnityEngine.Input
 KeyCode = UnityEngine.KeyCode
 
 -- 框架级 ------------------------------------------------------- 全小写
-timehelper = TimerHelper
-
 -- 工程全局设置
 csgamesetting = GameSetting
 
--- 资源管理
+-- util
+cstool = Util
+-- timehelper = TimerHelper
+
+-- Module
 assetMgr = AssetManager.Instance
 netMgr = NetManager.Instance
 
-cstool = Util
--- cslog = Log
--- csgamecontroller = GameController.Instance
-
 -- 业务级 ------------------------------------------------------ 全小写
-sdkmanager = SDKManager.Instance
+-- sdkmanager = SDKManager.Instance
