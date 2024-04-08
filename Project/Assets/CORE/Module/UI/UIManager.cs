@@ -16,7 +16,7 @@ using UnityEngine;
 
 // public class UIManager : ManagerVIBase<UIManager> {
 public class UIManager : MonoBehaviour {
-    public static UIManager Instance {get; private set;}
+    public static UIManager Instance { get; private set; }
 
     // 所有UI的主相机（非overlay模式）
     [HideInInspector]

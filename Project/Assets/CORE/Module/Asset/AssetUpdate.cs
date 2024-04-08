@@ -37,7 +37,7 @@ public class AssetUpdate : ManagerVIBase<AssetUpdate> {
         // TEMP
         // 如果版本号相同或者其他原因，则判定这不是一次有效更新
         bool hasValidUpdate = false;
-        cbUpdateComplete(hasValidUpdate);
+        cbUpdateComplete (hasValidUpdate);
     }
 
     // 进度

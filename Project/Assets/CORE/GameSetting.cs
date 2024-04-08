@@ -14,7 +14,7 @@ public class GameSetting {
     // 打包相关 ------------------------------------------- begin
     // 不使用字节码模式
     // public const bool LuaByteMode = false; //Lua字节码模式-默认关闭
-    public static string FrameworkPath{get{return Application.dataPath + "/LuaLib";}}
+    public static string FrameworkPath { get { return Application.dataPath + "/LuaLib"; } }
     // 素材扩展名
     public const string ExtName = ".unity3d";
     // 打包相关 ------------------------------------------- end
@@ -59,23 +59,23 @@ public class GameSetting {
     }
 
     public static void OnInitData (TextAsset serverConfigData) {
-        var jd = LitJson.JsonMapper.ToObject(serverConfigData.text);
-        ServerType = int.Parse(jd["ServerType"].ToString());
-        ChannelID = int.Parse(jd["ChannelID"].ToString());
-        ClientType = int.Parse(jd["ClientType"].ToString());
-        FacebookID = jd["FacebookID"].ToString();
-        WebBaseUrl = jd["WebBaseUrl"].ToString();
-        AssetServerSecretkey = jd["AssetServerSecretkey"].ToString();
-        RunningMode = (Enum_RunningMode) int.Parse(jd["RunningMode"].ToString());
+        var jd = LitJson.JsonMapper.ToObject (serverConfigData.text);
+        ServerType = int.Parse (jd["ServerType"].ToString ());
+        ChannelID = int.Parse (jd["ChannelID"].ToString ());
+        ClientType = int.Parse (jd["ClientType"].ToString ());
+        FacebookID = jd["FacebookID"].ToString ();
+        WebBaseUrl = jd["WebBaseUrl"].ToString ();
+        AssetServerSecretkey = jd["AssetServerSecretkey"].ToString ();
+        RunningMode = (Enum_RunningMode) int.Parse (jd["RunningMode"].ToString ());
         // LocaleConfig = null;
 
-        Debug.Log("Game Config: " + serverConfigData.text);
-        Debug.Log("GameSetting.RunningMode: " + RunningMode);
+        Debug.Log ("Game Config: " + serverConfigData.text);
+        Debug.Log ("GameSetting.RunningMode: " + RunningMode);
 
         // hasGameSettingsInited = true;
         Log.Green ("workflow", "<<<<<< Init Local Config End");
     }
-    
+
     // 调试模式，控制的对象有：
     // 1：后台Log输出
     // 2：控制台（含前台Log）

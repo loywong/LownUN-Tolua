@@ -45,9 +45,9 @@ public enum Enum_MsgStyle {
 public enum Enum_SceneType {
     Startup = 1, //启动场景真实场景：Startup
     //(当前没有⽤到)如果新⽤⼾,则直接默认游客登录,否则以⽼帐⼾⾃动登录,没有⼀个登录场景来⼿动操作注册或者登录事件
-    Login = 2, //登录场景真实场景：Login
-    Lobby = 3, //⼤厅?真实场景：包括Lobby Luxury Tournaments三个场景.指三种模式, 分别是普通.奢侈.竞技场!!!
-    Battle = 4, //玩法_普通奢侈竞技真实场景：Game
+    Login   = 2, //登录场景真实场景：Login
+    Lobby   = 3, //⼤厅?真实场景：包括Lobby Luxury Tournaments三个场景.指三种模式, 分别是普通.奢侈.竞技场!!!
+    Battle  = 4, //玩法_普通奢侈竞技真实场景：Game
     //Battle_Arena=5, //玩法_竞技场场景真实场景：Game
 }
 
